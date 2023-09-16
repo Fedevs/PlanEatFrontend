@@ -1,0 +1,27 @@
+.dashboardContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px;
+  align-items: center;
+  border-bottom: 1px solid rgba(18, 18, 18, 0.25);
+  height: 105px;
+}
+
+.textContainer {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.profilePicture {
+  border-radius: 14px;
+  object-fit: cover;
+  border: 1px solid rgba(27, 127, 157, 0.25);
+}
