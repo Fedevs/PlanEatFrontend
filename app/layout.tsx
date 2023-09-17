@@ -1,12 +1,12 @@
-import './globals.css';
-import type { Metadata } from 'next';
-import { Open_Sans } from 'next/font/google';
+import "./globals.scss";
+import type { Metadata } from "next";
+import { Open_Sans } from "next/font/google";
 
-const openSans = Open_Sans({ subsets: ['latin'] });
+const openSans = Open_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Plan Eat',
-  description: 'A meal planner app',
+  title: "Plan Eat",
+  description: "A meal planner app",
 };
 
 export default function RootLayout({
