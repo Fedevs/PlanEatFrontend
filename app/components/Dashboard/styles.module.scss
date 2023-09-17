@@ -1,0 +1,26 @@
+@import "@styles/variables/colors";
+@import "@styles/mixins";
+
+.dashboardContainer {
+  @include flexbox($justify: space-between);
+  padding: 0 15px;
+  border-bottom: 1px solid $black25;
+  height: 105px;
+
+  .textContainer {
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  .imageContainer {
+    @include flexbox();
+    background-size: cover;
+    overflow: hidden;
+
+    .profilePicture {
+      border-radius: 14px;
+      object-fit: cover;
+      border: 1px solid $blue25;
+    }
+  }
+}

@@ -1,14 +1,12 @@
-import styles from './styles.module.css';
-import Image from 'next/image';
-import defaultProfilePicture from 'public/profileTEST.png';
-import getRandomNumber from '@/app/utils/getRandomNumber';
-import randomGreetings from '@/app/constants/randomGreetings';
+import styles from "./styles.module.scss";
+import Image from "next/image";
+import defaultProfilePicture from "public/profileTEST.png";
+import getRandomNumber from "@/app/utils/getRandomNumber";
+import randomGreetings from "@/app/constants/randomGreetings";
 
 export default function Dashboard() {
   const randomGreeting =
-    randomGreetings[
-      getRandomNumber(randomGreetings.length)
-    ];
+    randomGreetings[getRandomNumber(randomGreetings.length)];
 
   return (
     <header>

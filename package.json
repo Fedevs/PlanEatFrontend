@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --check --ignore-path .gitignore .",
+    "format:fix": "prettier --write --ignore-path .gitignore ."
   },
   "dependencies": {
     "@types/node": "20.5.7",
@@ -20,6 +22,8 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
-    "sass": "^1.66.1"
+    "eslint-config-prettier": "^9.0.0",
+    "prettier": "^3.0.3",
+    "sass": "^1.67.0"
   }
 }
