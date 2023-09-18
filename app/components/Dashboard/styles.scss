@@ -1,23 +1,19 @@
-@import "@styles/variables/colors";
-@import "@styles/mixins";
+@import "@styles/styles";
 
-.dashboardContainer {
-  @include flexbox($justify: space-between);
-  padding: 0 15px;
+.dashboard-container {
   border-bottom: 1px solid $black25;
   height: 105px;
 
-  .textContainer {
+  .text-container {
     font-size: 12px;
     font-weight: bold;
   }
 
-  .imageContainer {
-    @include flexbox();
+  .image-container {
     background-size: cover;
     overflow: hidden;
 
-    .profilePicture {
+    .profile-picture {
       border-radius: 14px;
       object-fit: cover;
       border: 1px solid $blue25;
