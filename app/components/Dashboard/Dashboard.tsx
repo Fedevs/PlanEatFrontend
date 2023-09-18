@@ -1,8 +1,9 @@
-import "./styles.scss";
+import "./Dashboard.scss";
 import Image from "next/image";
 import defaultProfilePicture from "public/profileTEST.png";
 import getRandomNumber from "@/app/utils/getRandomNumber";
 import randomGreetings from "@/app/constants/randomGreetings";
+import Test from "../Test/Test";
 
 export default function Dashboard() {
   const randomGreeting =
@@ -12,6 +13,7 @@ export default function Dashboard() {
     <header>
       <section className='dashboard-container flex justify-between px-4'>
         <div className='text-container'>
+          <Test></Test>
           <p>Hello, [NAME]</p>
           <p>{randomGreeting}</p>
         </div>
