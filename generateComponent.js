@@ -1,6 +1,6 @@
 /*
 npm run create-component ComponentName => It creates a regular component
-npm run create-component ComponentName props => It creates a component with props
+npm run create-component-props ComponentName => It creates a component with props
 */
 
 const fs = require("fs");
@@ -14,9 +14,8 @@ function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-const componentName = process.argv[2];
-const generateProps = process.argv[3] === "props";
-console.log(process.argv);
+const generateProps = process.argv[2] === "--props";
+const componentName = generateProps ? process.argv[3] : process.argv[2];
 
 if (!componentName) {
   console.error(
