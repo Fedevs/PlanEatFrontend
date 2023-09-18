@@ -1,0 +1,27 @@
+@import "@styles/mixins";
+
+$alignment: (
+  start: start,
+  center: center,
+  between: space-between,
+  around: space-around,
+  evenly: space-evenly,
+);
+
+.flex {
+  @include flexbox();
+}
+
+.flex-column {
+  @include flexbox($direction: column);
+}
+
+@each $alignment-key, $alignment-value in $alignment {
+  .justify-#{$alignment-key} {
+    justify-content: $alignment-value;
+  }
+
+  .align-#{$alignment-key} {
+    align-items: $alignment-value;
+  }
+}

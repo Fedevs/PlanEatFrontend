@@ -1,4 +1,4 @@
-import styles from "./styles.module.scss";
+import "./styles.scss";
 import Image from "next/image";
 import defaultProfilePicture from "public/profileTEST.png";
 import getRandomNumber from "@/app/utils/getRandomNumber";
@@ -10,16 +10,16 @@ export default function Dashboard() {
 
   return (
     <header>
-      <section className={styles.dashboardContainer}>
-        <div className={styles.textContainer}>
+      <section className='dashboard-container flex justify-between px-4'>
+        <div className='text-container'>
           <p>Hello, [NAME]</p>
           <p>{randomGreeting}</p>
         </div>
-        <div className={styles.imageContainer}>
+        <div className='image-container flex'>
           <Image
             src={defaultProfilePicture}
             alt='Profile picture'
-            className={styles.profilePicture}
+            className='profile-picture'
             width={55}
             height={55}
           />

@@ -1,0 +1,55 @@
+// Marging Classes
+@for $i from 1 through 10 {
+  $margin-value: $i * 4px;
+  .m-#{$i} {
+    margin: $margin-value;
+  }
+  .mx-#{$i} {
+    margin-left: $margin-value;
+    margin-right: $margin-value;
+  }
+  .my-#{$i} {
+    margin-top: $margin-value;
+    margin-bottom: $margin-value;
+  }
+  .mt-#{$i} {
+    margin-top: $margin-value;
+  }
+  .mr-#{$i} {
+    margin-right: $margin-value;
+  }
+  .mb-#{$i} {
+    margin-bottom: $margin-value;
+  }
+  .ml-#{$i} {
+    margin-left: $margin-value;
+  }
+}
+
+// Padding Classes
+@for $i from 1 through 10 {
+  $padding-value: $i * 4px;
+  .p-#{$i} {
+    padding: $padding-value;
+  }
+  .px-#{$i} {
+    padding-left: $padding-value;
+    padding-right: $padding-value;
+  }
+  .py-#{$i} {
+    padding-top: $padding-value;
+    padding-bottom: $padding-value;
+  }
+  .pt-#{$i} {
+    padding-top: $padding-value;
+  }
+  .pr-#{$i} {
+    padding-right: $padding-value;
+  }
+  .pb-#{$i} {
+    padding-bottom: $padding-value;
+  }
+  .pl-#{$i} {
+    padding-left: $padding-value;
+  }
+}
