@@ -1,4 +1,4 @@
-import "./styles.scss";
+import "./Dashboard.scss";
 import Image from "next/image";
 import defaultProfilePicture from "public/profileTEST.png";
 import getRandomNumber from "@/app/utils/getRandomNumber";
