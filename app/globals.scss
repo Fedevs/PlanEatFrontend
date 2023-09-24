@@ -5,8 +5,11 @@ body {
 
   // Settings until desktop version is available
 
-  max-width: 500px;
-  @media (min-width: 500px) {
-    margin: 0 auto;
+  main,
+  header {
+    @media (min-width: 500px) {
+      width: 500px;
+      margin: 0 auto;
+    }
   }
 }
