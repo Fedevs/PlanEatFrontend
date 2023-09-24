@@ -1,0 +1,20 @@
+@import "@styles/styles";
+
+.planner-card-dates-container {
+  background-color: $orange;
+  color: $white;
+  border-radius: 6px 0 3px 0;
+  height: 55px;
+  width: 94px;
+  box-shadow: -2px 0 6px 0 $black25;
+
+  .lane {
+    border-top: 1px solid $white;
+    width: 30px;
+  }
+
+  .dates {
+    margin: 0;
+    font-size: 12px;
+  }
+}

@@ -1,5 +1,5 @@
 // Marging Classes
-@for $i from 1 through 10 {
+@for $i from 0 through 10 {
   $margin-value: $i * 4px;
   .m-#{$i} {
     margin: $margin-value;
@@ -27,7 +27,7 @@
 }
 
 // Padding Classes
-@for $i from 1 through 10 {
+@for $i from 0 through 10 {
   $padding-value: $i * 4px;
   .p-#{$i} {
     padding: $padding-value;

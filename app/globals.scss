@@ -2,4 +2,14 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  // Settings until desktop version is available
+
+  main,
+  header {
+    @media (min-width: 500px) {
+      width: 500px;
+      margin: 0 auto;
+    }
+  }
 }
