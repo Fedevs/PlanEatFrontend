@@ -66,7 +66,7 @@ fs.writeFileSync(
   `@import "@styles/styles";
 
 .${kebabCaseName} {
-  /* Styles */
+  position: relative;
 }
 `
 );

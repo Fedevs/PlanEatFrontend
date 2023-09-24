@@ -1,0 +1,45 @@
+@import "@styles/styles";
+
+.planner-card {
+  position: relative;
+  border-radius: 4px;
+  box-shadow: 0 4px 4px 0px $black25;
+
+  .planner-card-wrapper {
+    height: 100px;
+    overflow: hidden;
+
+    .title {
+      font-size: 16px;
+    }
+
+    .short-description {
+      font-size: 12px;
+      overflow: hidden;
+      text-wrap: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .planner-card-dates {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../../public/defaultPlannerCardBackground.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.2;
+    border-radius: 4px;
+    z-index: -1;
+  }
+}

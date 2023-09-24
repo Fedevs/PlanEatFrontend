@@ -25,3 +25,69 @@ $alignment: (
     align-items: $alignment-value;
   }
 }
+
+$self-alignment: (
+  start: flex-start,
+  end: flex-end,
+  auto: auto,
+  center: center,
+);
+
+@each $self-alignment-key, $self-alignment-value in $self-alignment {
+  .justify-self-#{$self-alignment-key} {
+    justify-self: $self-alignment-value;
+  }
+
+  .align-self-#{$self-alignment-key} {
+    align-self: $self-alignment-value;
+  }
+}
+
+.align-self-stretch {
+  align-self: baseline;
+}
+
+.align-self-stretch {
+  align-self: stretch;
+}
+
+.justify-self-left {
+  justify-self: left;
+}
+
+.justify-self-right {
+  justify-self: right;
+}
+
+$size: (
+  100: 100%,
+  75: 75%,
+  50: 50%,
+  25: 25%,
+);
+
+@each $size-key, $size-value in $size {
+  .h-#{$size-key} {
+    height: $size-value;
+  }
+
+  .w-#{$size-key} {
+    width: $size-value;
+  }
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.h-50 {
+  height: 50%;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.w-50 {
+  width: 50%;
+}

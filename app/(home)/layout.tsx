@@ -8,7 +8,7 @@ export default function HomeLayout({
   return (
     <>
       <Dashboard />
-      <section>{children}</section>
+      <main>{children}</main>
       {/* Navigation bar */}
       <footer></footer>
     </>
