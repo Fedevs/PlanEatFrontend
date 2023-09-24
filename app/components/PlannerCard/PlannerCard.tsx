@@ -1,5 +1,5 @@
 import "./PlannerCard.scss";
-import PlannerCardDatesContainer from "../PlannerCardDatesContainer/PlannerCardDatesContainer";
+import PlannerCardDatesContainer from "@/app/components/PlannerCardDatesContainer/PlannerCardDatesContainer";
 import { PlannerInterface } from "@/types/types";
 
 export default function PlannerCard(props: PlannerInterface) {
