@@ -13,12 +13,16 @@ export default async function MealCard(props: MealInterface) {
     width: 16,
     src: closeIcon,
     alt: "Delete meal",
+    ariaLabel: "Remove the meal from the list",
+    title: "Delete meal",
   };
   const editButtonImageOptions = {
     height: 16,
     width: 16,
     src: editIcon,
     alt: "Edit meal",
+    ariaLabel: "Change any attribute from the meal",
+    title: "Edit meal",
   };
 
   return (

@@ -15,6 +15,8 @@ interface ButtonProps {
   onClick?: () => void;
   styles?: object;
   image?: imageOptions;
+  ariaLabel?: string;
+  title?: string;
 }
 
 export default function Button(props: ButtonProps) {
@@ -22,6 +24,8 @@ export default function Button(props: ButtonProps) {
 
   return (
     <button
+      aria-label={props.ariaLabel}
+      title={props.title}
       className='button flex justify-around'
       style={props.styles}
       onClick={props.onClick || handleClickMock}
