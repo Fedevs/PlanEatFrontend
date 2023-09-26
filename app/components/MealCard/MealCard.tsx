@@ -8,29 +8,33 @@ import editIcon from "@/public/icons/edit-icon.svg";
 
 export default async function MealCard(props: MealInterface) {
   const ingredients = await getIngredients(props.id);
-  const closeButtonImageOptions = {
-    height: 16,
-    width: 16,
-    src: closeIcon,
-    alt: "Delete meal",
-    ariaLabel: "Remove the meal from the list",
-    title: "Delete meal",
-  };
-  const editButtonImageOptions = {
-    height: 16,
-    width: 16,
-    src: editIcon,
-    alt: "Edit meal",
+  const editButtonProps = {
+    image: {
+      height: 16,
+      width: 16,
+      src: editIcon,
+      alt: "Edit meal",
+    },
     ariaLabel: "Change any attribute from the meal",
     title: "Edit meal",
+  };
+  const closeButtonProps = {
+    image: {
+      height: 16,
+      width: 16,
+      src: closeIcon,
+      alt: "Delete meal",
+    },
+    ariaLabel: "Remove the meal from the list",
+    title: "Delete meal",
   };
 
   return (
     <div className='meal-card flex my-5'>
       <div className='meal-card-container h-75 p-3 flex-column justify-around '>
         <div className='icons-container flex p-2'>
-          <Button image={editButtonImageOptions} />
-          <Button image={closeButtonImageOptions} />
+          <Button {...editButtonProps} />
+          <Button {...closeButtonProps} />
         </div>
         <h2 className='title m-1'>{props.name}</h2>
         <p className='ingredients align-self-start'>

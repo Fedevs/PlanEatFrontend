@@ -20,7 +20,7 @@ interface ButtonProps {
 }
 
 export default function Button(props: ButtonProps) {
-  const handleClickMock = () => console.log("button clicked");
+  const handleClickMock = () => console.log(`${props.title} button clicked`);
 
   return (
     <button
