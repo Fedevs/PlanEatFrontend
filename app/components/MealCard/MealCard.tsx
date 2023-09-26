@@ -1,15 +1,7 @@
 import "./MealCard.scss";
-import { MealInterface, Ingredient } from "@/types/types";
+import { MealInterface } from "@/types/types";
+import getIngredients from "@/app/hooks/getIngredients";
 import formatIngredients from "@/app/utils/formatIngredients";
-
-async function getIngredients(id: number): Promise<Ingredient[]> {
-  const url = `${process.env.BASE_URL}meals/${id}/ingredients`;
-  const res = await fetch(url);
-  if (res.status !== 200) {
-    throw new Error("Failed to fetch planners");
-  }
-  return res.json();
-}
 
 export default async function MealCard(props: MealInterface) {
   const ingredients = await getIngredients(props.id);
