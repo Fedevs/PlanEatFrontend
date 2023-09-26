@@ -1,0 +1,11 @@
+@import "@styles/styles";
+
+.button {
+  position: relative;
+  background: none;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

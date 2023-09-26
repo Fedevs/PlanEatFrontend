@@ -23,6 +23,7 @@
   }
 
   .meal-card-container {
+    position: relative;
     background-color: $white90;
     box-shadow: 0 4px 4px 0 $black25;
     width: 90%;
@@ -46,6 +47,12 @@
     .features,
     .ingredients {
       margin: 0;
+    }
+
+    .icons-container {
+      position: absolute;
+      top: 0;
+      right: 0;
     }
   }
 }
