@@ -5,6 +5,12 @@
   border-radius: 4px;
   box-shadow: 0 4px 4px 0px $black25;
 
+  .icons-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
   .planner-card-wrapper {
     height: 100px;
     overflow: hidden;
