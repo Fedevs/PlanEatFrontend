@@ -1,11 +1,10 @@
 "use client";
 
 import "./Button.scss";
-import Image from "next/image";
+import { useEffect, useState } from "react";
 
-interface imageOptions {
-  src: string;
-  alt: string;
+interface svgOptions {
+  content: string;
   height: number;
   width: number;
 }
@@ -14,12 +13,23 @@ interface ButtonProps {
   text?: string;
   onClick?: () => void;
   styles?: object;
-  image?: imageOptions;
+  svg?: svgOptions;
   ariaLabel?: string;
   title?: string;
 }
 
-export default function Button(props: ButtonProps) {
+interface SvgIconProps extends React.SVGAttributes<SVGElement> {}
+
+export default function Button(props: ButtonProps): JSX.Element {
+  const [DynamicIcon, setDynamicIcon] = useState<React.FC<SvgIconProps> | null>(
+    null
+  );
+
+  useEffect(() => {
+    import(`@/public/icons/${props.svg?.content}-icon.svg`).then((module) => {
+      setDynamicIcon(() => module.default);
+    });
+  }, [props.svg?.content]);
   const handleClickMock = () => console.log(`${props.title} button clicked`);
 
   return (
@@ -31,7 +41,7 @@ export default function Button(props: ButtonProps) {
       onClick={props.onClick || handleClickMock}
     >
       {props.text && <p>{props.text}</p>}
-      {props.image && <Image {...props.image} alt={props.image.alt} />}
+      {DynamicIcon && <DynamicIcon {...props.svg} />}
     </button>
   );
 }

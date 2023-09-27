@@ -7,21 +7,19 @@ import editIcon from "@/public/icons/edit-icon.svg";
 
 export default function PlannerCard(props: PlannerInterface) {
   const editButtonProps = {
-    image: {
+    svg: {
       height: 16,
       width: 16,
-      src: editIcon,
-      alt: "Edit planner",
+      content: "edit",
     },
     ariaLabel: "Change any attribute from the planner",
     title: "Edit planner",
   };
   const closeButtonProps = {
-    image: {
+    svg: {
       height: 16,
       width: 16,
-      src: closeIcon,
-      alt: "Delete planner",
+      content: "close",
     },
     ariaLabel: "Remove the planner from the list",
     title: "Delete planner",
