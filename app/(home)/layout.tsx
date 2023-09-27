@@ -1,4 +1,5 @@
 import Dashboard from "@/app/components/Dashboard/Dashboard";
+import NavigationBar from "@/app/components/NavigationBar/NavigationBar";
 
 export default function HomeLayout({
   children,
@@ -9,8 +10,7 @@ export default function HomeLayout({
     <>
       <Dashboard />
       <main>{children}</main>
-      {/* Navigation bar */}
-      <footer></footer>
+      <NavigationBar />
     </>
   );
 }

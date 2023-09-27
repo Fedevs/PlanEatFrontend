@@ -1,0 +1,9 @@
+@import "@styles/styles";
+
+.navigation-bar-add-button {
+  position: relative;
+  border: none;
+  border-top: 1px solid $blue25;
+  background-color: $white;
+  width: calc(100% / 5);
+}
