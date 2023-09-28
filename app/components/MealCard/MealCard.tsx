@@ -2,24 +2,27 @@ import "./MealCard.scss";
 import { MealInterface } from "@/types/types";
 import getIngredients from "@/app/hooks/getIngredients";
 import formatIngredients from "@/app/utils/formatIngredients";
-import Button from "@/app/components/Button/Button";
+import Button, { ButtonProps } from "@/app/components/Button/Button";
+import editIcon from "@/public/icons/edit-icon.svg";
 
 export default async function MealCard(props: MealInterface) {
   const ingredients = await getIngredients(props.id);
-  const editButtonProps = {
-    svg: {
+
+  const editButtonProps: ButtonProps = {
+    action: "edit",
+    svgOptions: {
       height: 16,
       width: 16,
-      content: "edit",
     },
-    ariaLabel: "Change any attribute from the meal",
-    title: "Edit meal",
+    ariaLabel: "Remove the meal from the list",
+    title: "Delete meal",
   };
-  const closeButtonProps = {
-    svg: {
+
+  const closeButtonProps: ButtonProps = {
+    action: "close",
+    svgOptions: {
       height: 16,
       width: 16,
-      content: "close",
     },
     ariaLabel: "Remove the meal from the list",
     title: "Delete meal",
