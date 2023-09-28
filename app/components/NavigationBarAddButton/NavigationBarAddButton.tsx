@@ -1,15 +1,13 @@
 import AddIcon from "@/public/icons/add-icon.svg";
 import "./NavigationBarAddButton.scss";
 
-interface NavigationBarAddButtonProps {
-  // Your props here
-}
-
-export default function NavigationBarAddButton(
-  props: NavigationBarAddButtonProps
-) {
+export default function NavigationBarAddButton() {
   return (
-    <button className='navigation-bar-add-button flex'>
+    <button
+      className='navigation-bar-add-button flex'
+      aria-label='Add an item to the list'
+      title='Add a new item'
+    >
       <span className='icon flex mb-4'>
         <AddIcon />
       </span>
