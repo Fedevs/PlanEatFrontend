@@ -7,10 +7,10 @@ export default function HomeLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <div className='container h-100'>
       <Dashboard />
       <main>{children}</main>
       <NavigationBar />
-    </>
+    </div>
   );
 }
