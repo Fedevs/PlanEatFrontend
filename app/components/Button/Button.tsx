@@ -23,8 +23,7 @@ export interface ButtonProps {
 
 export default function Button(props: ButtonProps): JSX.Element {
   const handleClickMock = () => console.log(`${props.title} button clicked`);
-  // const actionsAvailable: Array<string> = ["edit", "close"];
-  // const isActionAvailable: boolean = actionsAvailable.includes(props.action);
+
   return (
     <button
       aria-label={props.ariaLabel}
@@ -40,21 +39,4 @@ export default function Button(props: ButtonProps): JSX.Element {
       )}
     </button>
   );
-  // return !isActionAvailable ? (
-  //   <></>
-  // ) : (
-  //   <button
-  //     aria-label={props.ariaLabel}
-  //     title={props.title}
-  //     className='button flex justify-around'
-  //     style={props.styles}
-  //     onClick={props.onClick || handleClickMock}
-  //   >
-  //     {props.action === "edit" ? (
-  //       <EditIcon {...props.svgOptions} />
-  //     ) : (
-  //       <CloseIcon {...props.svgOptions} />
-  //     )}
-  //   </button>
-  // );
 }

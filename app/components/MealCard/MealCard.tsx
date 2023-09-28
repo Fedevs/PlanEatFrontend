@@ -14,8 +14,8 @@ export default async function MealCard(props: MealInterface) {
       height: 16,
       width: 16,
     },
-    ariaLabel: "Remove the meal from the list",
-    title: "Delete meal",
+    ariaLabel: "Edit meal features",
+    title: "Edit meal",
   };
 
   const closeButtonProps: ButtonProps = {

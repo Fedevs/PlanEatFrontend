@@ -5,7 +5,7 @@ import { PlannerInterface } from "@/types/types";
 
 export default function PlannerCard(props: PlannerInterface) {
   const editButtonProps: ButtonProps = {
-    action: "test error",
+    action: "edit",
     svgOptions: {
       height: 16,
       width: 16,
