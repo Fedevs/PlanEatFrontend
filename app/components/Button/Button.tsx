@@ -1,25 +1,27 @@
 "use client";
 
+import EditIcon from "@/public/icons/edit-icon.svg";
+import CloseIcon from "@/public/icons/close-icon.svg";
 import "./Button.scss";
-import Image from "next/image";
 
-interface imageOptions {
-  src: string;
-  alt: string;
-  height: number;
-  width: number;
+type buttonAction = "edit" | "close";
+
+interface svgOptions {
+  width?: string | number;
+  height?: string | number;
+  fill?: string;
 }
 
-interface ButtonProps {
-  text?: string;
+export interface ButtonProps {
+  action: buttonAction;
+  svgOptions?: svgOptions;
   onClick?: () => void;
   styles?: object;
-  image?: imageOptions;
-  ariaLabel?: string;
-  title?: string;
+  ariaLabel: string;
+  title: string;
 }
 
-export default function Button(props: ButtonProps) {
+export default function Button(props: ButtonProps): JSX.Element {
   const handleClickMock = () => console.log(`${props.title} button clicked`);
 
   return (
@@ -30,8 +32,11 @@ export default function Button(props: ButtonProps) {
       style={props.styles}
       onClick={props.onClick || handleClickMock}
     >
-      {props.text && <p>{props.text}</p>}
-      {props.image && <Image {...props.image} alt={props.image.alt} />}
+      {props.action === "edit" ? (
+        <EditIcon {...props.svgOptions} />
+      ) : (
+        <CloseIcon {...props.svgOptions} />
+      )}
     </button>
   );
 }

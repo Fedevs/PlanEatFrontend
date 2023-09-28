@@ -1,0 +1,52 @@
+@import "@styles/styles";
+
+.navigation-bar-button {
+  position: relative;
+  border: none;
+  border-top: 1px solid $blue25;
+  cursor: pointer;
+  background-color: $white;
+  transition: background 0.3s ease;
+
+  a {
+    text-decoration: none;
+    color: $black;
+  }
+
+  .icon {
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .text {
+    font-size: 10px;
+  }
+}
+
+.selected {
+  &::before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid $dark-blue;
+    position: absolute;
+    top: -7px;
+    left: calc(50% - 8px);
+  }
+}
+
+.navigation-bar-button:hover,
+.selected {
+  background-color: $dark-blue;
+  svg {
+    fill: $white;
+  }
+  .text {
+    color: $white;
+  }
+}

@@ -1,0 +1,30 @@
+@import "@styles/styles";
+
+.navigation-bar-add-button {
+  position: relative;
+  border: none;
+  border-top: 1px solid $blue25;
+  background-color: $white;
+  width: calc(100% / 5);
+  cursor: pointer;
+
+  .icon {
+    background-color: $orange;
+    width: 90%;
+    max-width: 56px;
+    border-radius: 50%;
+    box-shadow: 0 1px 4px 1px $black25;
+    transition: all 0.3s ease-in;
+
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 1px 4px 2px $black;
+    }
+
+    svg {
+      width: 56px;
+      height: 56px;
+      fill: $white;
+    }
+  }
+}

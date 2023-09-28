@@ -1,5 +1,5 @@
-import "./PlannerCardDatesContainer.scss";
 import formatDate from "@/app/utils/formatDate";
+import "./PlannerCardDatesContainer.scss";
 
 interface PlannerCardDatesContainerProps {
   startDate: string;

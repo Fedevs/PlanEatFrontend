@@ -1,8 +1,8 @@
-import "./Dashboard.scss";
 import Image from "next/image";
 import defaultProfilePicture from "public/defaultProfilePicture.webp";
 import getRandomNumber from "@/app/utils/getRandomNumber";
 import randomGreetings from "@/app/constants/randomGreetings";
+import "./Dashboard.scss";
 
 export default function Dashboard() {
   const randomGreeting =
