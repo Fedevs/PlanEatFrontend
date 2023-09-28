@@ -4,13 +4,25 @@
   position: relative;
   border: none;
   border-top: 1px solid $blue25;
-  background-color: $white;
-
   cursor: pointer;
+  transition: background 0.3s ease;
 
   .icon {
     width: 20px;
     height: 20px;
-    color: $black;
+  }
+
+  .text {
+    font-size: 8px;
+  }
+
+  &:hover {
+    background-color: $blue;
+    svg {
+      fill: $white;
+    }
+    .text {
+      color: $white;
+    }
   }
 }

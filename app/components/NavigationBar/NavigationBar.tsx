@@ -1,39 +1,25 @@
-import NavigationBarButton from "@/app/components/NavigationBarButton/NavigationBarButton";
+import NavigationBarButton, {
+  NavigationBarButtonProps,
+} from "@/app/components/NavigationBarButton/NavigationBarButton";
 import NavigationBarAddButton from "@/app/components/NavigationBarAddButton/NavigationBarAddButton";
-import calendarIcon from "@/public/icons/calendar-icon.svg";
-import menuIcon from "@/public/icons/menu-icon.svg";
-import orangeIcon from "@/public/icons/orange-icon.svg";
-import watchIcon from "@/public/icons/watch-icon.svg";
 import "./NavigationBar.scss";
 
 export default function NavigationBar() {
-  const plannersButtonOptions = {
+  const plannersButtonOptions: NavigationBarButtonProps = {
+    tab: "planners",
     text: "Planners",
-    imageOptions: {
-      src: calendarIcon,
-      alt: "Planners tab",
-    },
   };
-  const mealsButtonOptions = {
+  const mealsButtonOptions: NavigationBarButtonProps = {
+    tab: "meals",
     text: "Meals",
-    imageOptions: {
-      src: menuIcon,
-      alt: "Meals tab",
-    },
   };
-  const ingredientsButtonOptions = {
+  const ingredientsButtonOptions: NavigationBarButtonProps = {
+    tab: "ingredients",
     text: "Ingredients",
-    imageOptions: {
-      src: orangeIcon,
-      alt: "Ingredients tab",
-    },
   };
-  const mealTimesButtonOptions = {
+  const mealTimesButtonOptions: NavigationBarButtonProps = {
+    tab: "mealTimes",
     text: "Meal times",
-    imageOptions: {
-      src: watchIcon,
-      alt: "Meal times tab",
-    },
   };
   return (
     <footer className='navigation-bar'>
@@ -43,7 +29,7 @@ export default function NavigationBar() {
             <NavigationBarButton {...plannersButtonOptions} />
           </li>
           <li className='h-100 m-0 p-0'>
-            <NavigationBarButton {...mealTimesButtonOptions} />
+            <NavigationBarButton {...mealsButtonOptions} />
           </li>
           <li className='h-100 m-0 p-0'>
             <NavigationBarAddButton />

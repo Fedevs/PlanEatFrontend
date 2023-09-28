@@ -1,28 +1,33 @@
 import "./NavigationBarButton.scss";
-import Image from "next/image";
+import Planners from "@/public/icons/calendar-icon.svg";
+import Meals from "@/public/icons/menu-icon.svg";
+import Ingredients from "@/public/icons/orange-icon.svg";
+import MealTimes from "@/public/icons/watch-icon.svg";
 
-interface NavigationBarButtonProps {
-  imageOptions: {
-    src: string;
-    alt: string;
-    width?: number;
-    height?: number;
-  };
+type icon = "planners" | "meals" | "ingredients" | "mealTimes";
+
+export interface NavigationBarButtonProps {
+  tab: icon;
   text: string;
 }
 
 export default function NavigationBarButton(props: NavigationBarButtonProps) {
+  const icon = {
+    planners: Planners,
+    meals: Meals,
+    ingredients: Ingredients,
+    mealTimes: MealTimes,
+  };
+  const IconComponent = icon[props.tab];
+
   return (
-    <button className='navigation-bar-button flex-column'>
+    <button className='navigation-bar-button flex-column justify-around'>
       <span className='icon'>
-        <Image
-          src={props.imageOptions.src}
-          alt={props.imageOptions.alt}
-          width={props.imageOptions.width || 20}
-          height={props.imageOptions.height || 20}
-        />
+        <IconComponent />
       </span>
-      <span className='text'>{props.text}</span>
+      <span className='text'>
+        <strong>{props.text}</strong>
+      </span>
     </button>
   );
 }

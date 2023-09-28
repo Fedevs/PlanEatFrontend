@@ -3,7 +3,6 @@ import { MealInterface } from "@/types/types";
 import getIngredients from "@/app/hooks/getIngredients";
 import formatIngredients from "@/app/utils/formatIngredients";
 import Button, { ButtonProps } from "@/app/components/Button/Button";
-import editIcon from "@/public/icons/edit-icon.svg";
 
 export default async function MealCard(props: MealInterface) {
   const ingredients = await getIngredients(props.id);
