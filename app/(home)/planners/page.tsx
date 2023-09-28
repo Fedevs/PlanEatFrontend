@@ -1,6 +1,6 @@
-import PlannerCard from "@/app/components/PlannerCard/PlannerCard";
+import getPlanners from "@/app/hooks/getPlanners";
 import { PlannerInterface } from "@/types/types";
-import getPlanners from "../hooks/getPlanners";
+import PlannerCard from "@/app/components/PlannerCard/PlannerCard";
 
 export default async function Planners() {
   const planners = await getPlanners();

@@ -1,8 +1,8 @@
 "use client";
 
-import "./Button.scss";
 import EditIcon from "@/public/icons/edit-icon.svg";
 import CloseIcon from "@/public/icons/close-icon.svg";
+import "./Button.scss";
 
 type buttonAction = "edit" | "close";
 

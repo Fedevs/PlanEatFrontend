@@ -1,6 +1,6 @@
-import MealCard from "@/app/components/MealCard/MealCard";
-import { MealInterface } from "@/types/types";
 import getMeals from "@/app/hooks/getMeals";
+import { MealInterface } from "@/types/types";
+import MealCard from "@/app/components/MealCard/MealCard";
 
 export default async function Meals() {
   const meals = await getMeals();

@@ -1,7 +1,7 @@
-import "./PlannerCard.scss";
+import { PlannerInterface } from "@/types/types";
 import Button, { ButtonProps } from "@/app/components/Button/Button";
 import PlannerCardDatesContainer from "@/app/components/PlannerCardDatesContainer/PlannerCardDatesContainer";
-import { PlannerInterface } from "@/types/types";
+import "./PlannerCard.scss";
 
 export default function PlannerCard(props: PlannerInterface) {
   const editButtonProps: ButtonProps = {

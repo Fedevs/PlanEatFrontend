@@ -10,6 +10,15 @@ const nextConfig = {
     });
     return config;
   },
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/planners",
+        permanent: true, // Puedes usar permanent: false si prefieres una redirección temporal
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
