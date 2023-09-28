@@ -2,6 +2,7 @@ import Image from "next/image";
 import defaultProfilePicture from "public/defaultProfilePicture.webp";
 import getRandomNumber from "@/app/utils/getRandomNumber";
 import randomGreetings from "@/app/constants/randomGreetings";
+import SearchBar from "../SearchBar/SearchBar";
 import "./Dashboard.scss";
 
 export default function Dashboard() {
@@ -9,7 +10,7 @@ export default function Dashboard() {
     randomGreetings[getRandomNumber(randomGreetings.length)];
 
   return (
-    <header>
+    <header className='header mb-3'>
       <section className='dashboard-container flex justify-between px-4'>
         <div className='text-container'>
           <p>Hello, [NAME]</p>
@@ -26,6 +27,7 @@ export default function Dashboard() {
           />
         </div>
       </section>
+      <SearchBar />
     </header>
   );
 }
