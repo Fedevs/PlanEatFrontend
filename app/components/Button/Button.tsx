@@ -1,37 +1,30 @@
 "use client";
 
 import "./Button.scss";
-import { useEffect, useState } from "react";
+import EditIcon from "@/public/icons/edit-icon.svg";
+import CloseIcon from "@/public/icons/close-icon.svg";
+
+type buttonAction = "edit" | "close";
 
 interface svgOptions {
-  content: string;
-  height: number;
-  width: number;
+  width?: string | number;
+  height?: string | number;
+  fill?: string;
 }
 
-interface ButtonProps {
-  text?: string;
+export interface ButtonProps {
+  action: buttonAction;
+  svgOptions?: svgOptions;
   onClick?: () => void;
   styles?: object;
-  svg?: svgOptions;
-  ariaLabel?: string;
-  title?: string;
+  ariaLabel: string;
+  title: string;
 }
 
-interface SvgIconProps extends React.SVGAttributes<SVGElement> {}
-
 export default function Button(props: ButtonProps): JSX.Element {
-  const [DynamicIcon, setDynamicIcon] = useState<React.FC<SvgIconProps> | null>(
-    null
-  );
-
-  useEffect(() => {
-    import(`@/public/icons/${props.svg?.content}-icon.svg`).then((module) => {
-      setDynamicIcon(() => module.default);
-    });
-  }, [props.svg?.content]);
   const handleClickMock = () => console.log(`${props.title} button clicked`);
-
+  // const actionsAvailable: Array<string> = ["edit", "close"];
+  // const isActionAvailable: boolean = actionsAvailable.includes(props.action);
   return (
     <button
       aria-label={props.ariaLabel}
@@ -40,8 +33,28 @@ export default function Button(props: ButtonProps): JSX.Element {
       style={props.styles}
       onClick={props.onClick || handleClickMock}
     >
-      {props.text && <p>{props.text}</p>}
-      {DynamicIcon && <DynamicIcon {...props.svg} />}
+      {props.action === "edit" ? (
+        <EditIcon {...props.svgOptions} />
+      ) : (
+        <CloseIcon {...props.svgOptions} />
+      )}
     </button>
   );
+  // return !isActionAvailable ? (
+  //   <></>
+  // ) : (
+  //   <button
+  //     aria-label={props.ariaLabel}
+  //     title={props.title}
+  //     className='button flex justify-around'
+  //     style={props.styles}
+  //     onClick={props.onClick || handleClickMock}
+  //   >
+  //     {props.action === "edit" ? (
+  //       <EditIcon {...props.svgOptions} />
+  //     ) : (
+  //       <CloseIcon {...props.svgOptions} />
+  //     )}
+  //   </button>
+  // );
 }

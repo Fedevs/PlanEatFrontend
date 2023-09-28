@@ -1,25 +1,23 @@
 import "./PlannerCard.scss";
-import Button from "@/app/components/Button/Button";
+import Button, { ButtonProps } from "@/app/components/Button/Button";
 import PlannerCardDatesContainer from "@/app/components/PlannerCardDatesContainer/PlannerCardDatesContainer";
 import { PlannerInterface } from "@/types/types";
-import closeIcon from "@/public/icons/close-icon.svg";
-import editIcon from "@/public/icons/edit-icon.svg";
 
 export default function PlannerCard(props: PlannerInterface) {
-  const editButtonProps = {
-    svg: {
+  const editButtonProps: ButtonProps = {
+    action: "test error",
+    svgOptions: {
       height: 16,
       width: 16,
-      content: "edit",
     },
     ariaLabel: "Change any attribute from the planner",
     title: "Edit planner",
   };
-  const closeButtonProps = {
-    svg: {
+  const closeButtonProps: ButtonProps = {
+    action: "close",
+    svgOptions: {
       height: 16,
       width: 16,
-      content: "close",
     },
     ariaLabel: "Remove the planner from the list",
     title: "Delete planner",
