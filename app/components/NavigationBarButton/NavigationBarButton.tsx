@@ -27,9 +27,13 @@ export default function NavigationBarButton(props: NavigationBarButtonProps) {
   const selected = pathName === `/${props.tab}`;
 
   return (
-    <button className={`navigation-bar-button ${selected ? "selected" : ""}`}>
+    <button
+      className={`navigation-bar-button swipe-overlay ${
+        selected ? "selected" : ""
+      }`}
+    >
       <Link className='flex-column' href={`/${props.tab}`}>
-        <span className='icon'>
+        <span className='icon '>
           <IconComponent />
         </span>
         <span className='text'>
