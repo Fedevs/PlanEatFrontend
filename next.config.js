@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 const path = require("path");
+const withPWA = require("next-pwa")({
+  dest: "public",
+});
 
-const nextConfig = {
+const nextConfig = withPWA({
   webpack: (config) => {
     config.resolve.alias["@styles"] = path.join(__dirname, "app/styles");
     config.module.rules.push({
@@ -15,10 +18,10 @@ const nextConfig = {
       {
         source: "/",
         destination: "/planners",
-        permanent: true, // Puedes usar permanent: false si prefieres una redirección temporal
+        permanent: true,
       },
     ];
   },
-};
+});
 
 module.exports = nextConfig;

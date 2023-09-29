@@ -7,6 +7,8 @@ const openSans = Open_Sans({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Plan Eat",
   description: "A meal planner app",
+  themeColor: "#f7f7f7",
+  icons: { apple: "/icon.png" },
 };
 
 export default function RootLayout({
