@@ -1,0 +1,39 @@
+@import "@styles/styles";
+
+.search-bar {
+  position: absolute;
+  border-radius: 10px;
+  width: 250px;
+  border: 1px solid $black25;
+  left: 50%;
+  bottom: -15px;
+  transform: translate(-50%);
+  z-index: 1;
+  background-color: #ffffff;
+
+  .icon-button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+  }
+
+  .bar {
+    border: none;
+    background: transparent;
+    color: $black;
+    width: 100%;
+    outline: none;
+  }
+
+  .bar::placeholder {
+    color: $black25;
+  }
+
+  .search-bar:focus {
+    outline: none;
+  }
+}

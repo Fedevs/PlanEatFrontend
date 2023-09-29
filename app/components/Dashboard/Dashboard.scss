@@ -1,22 +1,26 @@
 @import "@styles/styles";
 
-.dashboard-container {
-  border-bottom: 1px solid $black25;
-  height: 105px;
+.header {
+  position: relative;
 
-  .text-container {
-    font-size: 12px;
-    font-weight: bold;
-  }
+  .dashboard-container {
+    border-bottom: 1px solid $black25;
+    height: 105px;
 
-  .image-container {
-    background-size: cover;
-    overflow: hidden;
+    .text-container {
+      font-size: 12px;
+      font-weight: bold;
+    }
 
-    .profile-picture {
-      border-radius: 14px;
-      object-fit: cover;
-      border: 1px solid $blue25;
+    .image-container {
+      background-size: cover;
+      overflow: hidden;
+
+      .profile-picture {
+        border-radius: 14px;
+        object-fit: cover;
+        border: 1px solid $blue25;
+      }
     }
   }
 }
