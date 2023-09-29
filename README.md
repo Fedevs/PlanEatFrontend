@@ -1,8 +1,25 @@
-# [<img width="60" src="https://github-production-user-asset-6210df.s3.amazonaws.com/86263343/271469169-80a864f7-044e-4082-82ca-c62bff430ab2.png"/>](https://plan-eat-frontend.vercel.app/planners) PlanEat (web mobile app)
+ [<img width="60" src="https://github-production-user-asset-6210df.s3.amazonaws.com/86263343/271469169-80a864f7-044e-4082-82ca-c62bff430ab2.png"/>](https://plan-eat-frontend.vercel.app/planners)
+ 
+# Table of Contents
+1. [PlanEat (web mobile app)](#planeat-web-mobile-app)
+2. [Screenshots](#screenshots)
+3. [Usage](#usage)
+    - [Planners](#planners)
+    - [Meals](#meals)
+    - [Ingredients](#ingredients)
+    - [Meal times](#meal-times)
+4. [Roadmap 2023](#roadmap-2023)
+    - [October](#october)
+    - [November](#november)
+5. [Stats](#stats)
+6. [Backend](#backend)
+7. [Contact](#contact)
+
+# PlanEat (web mobile app)
 
 We all experience the moment when it's time to eat, and we don't know what to have. We take a moment to think, and when a good idea comes to mind, we open the fridge or pantry, only to find that we don't have what we need. To solve this problem, my partner and I started planning our meals weekly, writing it down on paper. We would jot down the complete list of ingredients we needed and then go to the supermarket to stock up for the week. After a while, we noticed that certain eating patterns repeated themselves, and we decided to create an app that could do all of this for us. That's how PLANEAT came into existence. Below, I'll share how it works.
 
-# Screenshots
+## Screenshots
 
 (Ingredients and Meal times are FIGMA screenshots as they have not been develop on website yet)
 
