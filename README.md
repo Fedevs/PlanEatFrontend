@@ -58,7 +58,7 @@ On this screen, you can add all the meals you want to plan. You can create as ma
 
 ## October
 
-1. Create a PWA
+1. ~~Create a PWA~~
 2. Create ingredients page
 3. Create meal times page
 4. Add functionality to ADD button
