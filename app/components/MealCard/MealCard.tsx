@@ -1,11 +1,11 @@
-import getIngredients from "@/app/hooks/getIngredients";
+import getMealIngredients from "@/app/hooks/getMealIngredients";
 import { MealInterface } from "@/types/types";
 import formatIngredients from "@/app/utils/formatIngredients";
 import Button, { ButtonProps } from "@/app/components/Button/Button";
 import "./MealCard.scss";
 
 export default async function MealCard(props: MealInterface) {
-  const ingredients = await getIngredients(props.id);
+  const ingredients = await getMealIngredients(props.id);
 
   const editButtonProps: ButtonProps = {
     action: "edit",
