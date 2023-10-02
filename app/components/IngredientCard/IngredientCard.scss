@@ -1,0 +1,40 @@
+@import "@styles/styles";
+
+.ingredient-card {
+  position: relative;
+  font-size: 12px;
+
+  .box {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    border-radius: 12px;
+    box-shadow: 0 0 4px 1px $black25;
+    border: 1px solid $orange;
+    background-image: url("../../../public/defaultIngredientCardBackground.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .icons-container {
+      position: absolute;
+      top: -15px;
+      right: -10px;
+
+      .round-btn {
+        border: 1px solid $orange;
+        border-radius: 50%;
+        background-color: $white;
+
+        button {
+          padding: 2px;
+        }
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+}

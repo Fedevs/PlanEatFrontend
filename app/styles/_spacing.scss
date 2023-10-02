@@ -53,3 +53,11 @@
     padding-left: $padding-value;
   }
 }
+
+// Gap Classes
+@for $i from 0 through 10 {
+  $gap-value: $i * 4px;
+  .gap-#{$i} {
+    gap: $gap-value;
+  }
+}
