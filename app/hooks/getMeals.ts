@@ -1,4 +1,6 @@
-export default async function getMeals() {
+import { MealInterface } from "@/types/types";
+
+export default async function getMeals(): Promise<MealInterface[]> {
   const url = `${process.env.BASE_URL}meals`;
   const res = await fetch(url);
   if (res.status !== 200) {

@@ -1,0 +1,35 @@
+@import "@styles/styles";
+
+.meal-time-card {
+  width: 90%;
+  position: relative;
+  border: 1px solid $orange;
+  border-radius: 8px;
+  box-shadow: 0 0 4px 1px $orange25;
+  cursor: grab;
+
+  .icons-container {
+    position: absolute;
+    top: -15px;
+    right: -10px;
+
+    .round-btn {
+      border: 1px solid $orange;
+      border-radius: 50%;
+      background-color: $white;
+
+      button {
+        padding: 2px;
+      }
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  p {
+    color: $black;
+  }
+}

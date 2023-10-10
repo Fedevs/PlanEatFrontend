@@ -10,11 +10,17 @@ export interface MealInterface {
   name: string;
 }
 
+export interface MealTimesInterface {
+  id: string;
+  name: string;
+}
+
 interface mealIngredient {
   mealId: number;
   ingredientId: number;
   quantity: number;
 }
+
 export interface Ingredient {
   id: number;
   name: string;
