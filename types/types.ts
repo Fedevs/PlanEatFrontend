@@ -11,7 +11,7 @@ export interface MealInterface {
 }
 
 export interface MealTimesInterface {
-  id: string;
+  id: number;
   name: string;
 }
 
