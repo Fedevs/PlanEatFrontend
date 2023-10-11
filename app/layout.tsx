@@ -1,3 +1,4 @@
+import ReduxProvider from "@/app/redux/provider";
 import "./globals.scss";
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
@@ -18,7 +19,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang='es'>
-      <body className={openSans.className}>{children}</body>
+      <body className={openSans.className}>
+        <ReduxProvider>{children}</ReduxProvider>
+      </body>
     </html>
   );
 }
