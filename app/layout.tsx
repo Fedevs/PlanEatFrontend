@@ -1,4 +1,4 @@
-import ReduxProvider from "@/app/redux/provider";
+import { ReduxProvider } from "@/app/redux/provider";
 import "./globals.scss";
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='es'>
+    <html lang='en'>
       <body className={openSans.className}>
         <ReduxProvider>{children}</ReduxProvider>
       </body>
