@@ -15,15 +15,15 @@ export interface MealTimesInterface {
   name: string;
 }
 
-interface mealIngredient {
+interface mealIngredientInterface {
   mealId: number;
   ingredientId: number;
   quantity: number;
 }
 
-export interface Ingredient {
+export interface IngredientInterface {
   id: number;
   name: string;
   unit: string;
-  mealIngredient: mealIngredient;
+  mealIngredient: mealIngredientInterface;
 }

@@ -60,16 +60,17 @@ On this screen, you can add all the meals you want to plan. You can create as ma
 
 1. ~~Create a PWA~~
 2. ~~Create ingredients page~~
-3. Create meal times page
-4. Add functionality to ADD button
+3. Implement state managment
+4. Create meal times page
+5. Add functionality to ADD button
    - Add planners
    - Add meals
    - Add ingredients
    - Add meal times
-5. Add functionality to SEARCH button
-6. Add functionality to EDIT and DELETE buttons
-7. Release v0.1.0alpha
-8. Visual improvements like loading screen, empty state
+6. Add functionality to SEARCH button
+7. Add functionality to EDIT and DELETE buttons
+8. Release v0.1.0alpha
+9. Visual improvements like loading screen, empty state
 
 ## November
 

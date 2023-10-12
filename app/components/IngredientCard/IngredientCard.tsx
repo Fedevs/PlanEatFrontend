@@ -1,9 +1,9 @@
-import { Ingredient } from "@/types/types";
+import { IngredientInterface } from "@/types/types";
 import Button, { ButtonProps } from "@/app/components/Button/Button";
 
 import "./IngredientCard.scss";
 
-export default function IngredientCard(props: Ingredient) {
+export default function IngredientCard(props: IngredientInterface) {
   const editButtonProps: ButtonProps = {
     action: "edit",
     svgOptions: {

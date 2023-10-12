@@ -1,14 +1,14 @@
-import { Ingredient } from "@/types/types";
+import { IngredientInterface } from "@/types/types";
 import truncateString from "./truncateString";
 
 /**
  * Format an array of ingredients into a comma-separated string with truncation if needed.
  *
- * @param {Array<Ingredient>} ingredients - An array of Ingredient objects.
+ * @param {Array<IngredientInterface>} ingredients - An array of Ingredient objects.
  * @returns {string} - The formatted string with ellipsis if needed.
  */
 export default function formatIngredients(
-  ingredients: Array<Ingredient>
+  ingredients: Array<IngredientInterface>
 ): string {
   const maxLength = 100;
   let currentLength = 0;
