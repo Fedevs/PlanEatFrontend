@@ -24,7 +24,11 @@ export const fetchInitialData = createAsyncThunk(
 const mealTimesSlice = createSlice({
   name: "mealTimesSlice",
   initialState,
-  reducers: {},
+  reducers: {
+    setOrder: (state, action) => {
+      state.data = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchInitialData.pending, (state) => {
@@ -43,5 +47,5 @@ const mealTimesSlice = createSlice({
       });
   },
 });
-
+export const { setOrder } = mealTimesSlice.actions;
 export default mealTimesSlice.reducer;
