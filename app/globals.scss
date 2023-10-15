@@ -6,7 +6,6 @@ body {
   padding: 0;
   box-sizing: border-box;
   height: 100vh;
-  overflow: hidden;
 
   .container {
     display: flex;
@@ -20,10 +19,16 @@ body {
   }
 
   main {
-    height: calc(100% - $dashboardHeight - $NavigationBarHeight - 10px);
-    margin-top: $dashboardHeight;
-    margin-bottom: $NavigationBarHeight;
+    height: calc(100% - $dashboardHeight - $NavigationBarHeight);
+    margin-top: calc($dashboardHeight + 15px);
+    margin-bottom: calc($NavigationBarHeight + 15px);
     max-width: 500px;
+    overflow: scroll;
+  }
+
+  main::-webkit-scrollbar {
+    width: 0;
+    height: 0;
   }
 
   // Settings until desktop version is available
@@ -35,8 +40,17 @@ body {
     }
     main {
       margin: 0 auto;
-      margin-top: $dashboardHeight;
-      margin-bottom: $NavigationBarHeight;
+      margin-top: calc($dashboardHeight + 15px);
+      margin-bottom: calc($NavigationBarHeight + 15px);
+    }
+
+    main::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    main::-webkit-scrollbar-thumb {
+      background-color: $orange;
+      border-radius: 20px;
     }
   }
 }
