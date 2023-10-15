@@ -5,11 +5,10 @@ import "./planners.scss";
 
 export default async function Planners() {
   const planners = await getPlanners();
-  const test = [...planners, ...planners];
 
   return (
     <section className='planners my-3 h-100'>
-      {test.map((planner: PlannerInterface) => (
+      {planners.map((planner: PlannerInterface) => (
         <PlannerCard key={planner.id} {...planner} />
       ))}
     </section>
