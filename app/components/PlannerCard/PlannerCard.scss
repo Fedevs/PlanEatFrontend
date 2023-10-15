@@ -6,9 +6,10 @@
   box-shadow: 0 4px 4px 0px $black25;
 
   .icons-container {
-    position: absolute;
-    top: 0;
-    right: 0;
+    .btn-wrapper {
+      width: 24px;
+      height: 24px;
+    }
   }
 
   .planner-card-wrapper {
@@ -22,8 +23,10 @@
     .short-description {
       font-size: 12px;
       overflow: hidden;
-      text-wrap: nowrap;
-      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 4;
+      margin-right: 100px;
     }
   }
 

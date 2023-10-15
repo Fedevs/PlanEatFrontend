@@ -1,11 +1,15 @@
 @import "@styles/styles";
 
 .header {
-  position: relative;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: $white;
+  z-index: 1;
 
   .dashboard-container {
     border-bottom: 1px solid $black25;
-    height: 105px;
+    height: $dashboardHeight;
 
     .text-container {
       font-size: 12px;

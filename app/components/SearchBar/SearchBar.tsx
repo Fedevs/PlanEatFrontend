@@ -21,7 +21,7 @@ export default function SearchBar() {
     }
   };
   return (
-    <div className='search-bar flex py-1 px-2'>
+    <div className='search-bar flex py-1 gap-4 px-2'>
       <button
         className='icon-button flex'
         onClick={handleIconClick}

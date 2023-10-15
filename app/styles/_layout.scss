@@ -1,11 +1,12 @@
 @import "@styles/mixins";
 
 $alignment: (
-  start: start,
+  start: flex-start,
   center: center,
   between: space-between,
   around: space-around,
   evenly: space-evenly,
+  end: flex-end,
 );
 
 .flex {

@@ -1,12 +1,13 @@
 @import "@styles/styles";
 
 .navigation-bar {
-  position: sticky;
-  width: 100%;
-  max-width: 500px;
+  position: absolute;
   bottom: 0;
-  left: 0;
-  height: 51px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: $white;
+  z-index: 1;
+  height: $NavigationBarHeight;
 
   nav {
     list-style: none;

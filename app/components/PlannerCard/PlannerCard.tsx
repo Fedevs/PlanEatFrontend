@@ -7,8 +7,8 @@ export default function PlannerCard(props: PlannerInterface) {
   const editButtonProps: ButtonProps = {
     action: "edit",
     svgOptions: {
-      height: 16,
-      width: 16,
+      height: 18,
+      width: 18,
     },
     ariaLabel: "Change any attribute from the planner",
     title: "Edit planner",
@@ -16,8 +16,8 @@ export default function PlannerCard(props: PlannerInterface) {
   const closeButtonProps: ButtonProps = {
     action: "close",
     svgOptions: {
-      height: 16,
-      width: 16,
+      height: 18,
+      width: 18,
     },
     ariaLabel: "Remove the planner from the list",
     title: "Delete planner",
@@ -28,15 +28,19 @@ export default function PlannerCard(props: PlannerInterface) {
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda quia molestias aliquam quam nobis iusto fugiat quis dolore? Ratione quod quibusdam inventore, blanditiis itaque ipsam sed necessitatibus quos eligendi nobis.";
   return (
     <div className='planner-card mx-2 my-5'>
-      <div className='icons-container flex p-1'>
-        <Button {...editButtonProps} />
-        <Button {...closeButtonProps} />
+      <div className='icons-container flex justify-end'>
+        <div className='btn-wrapper flex justify-end mr-6'>
+          <Button {...editButtonProps} />
+        </div>
+        <div className='btn-wrapper flex justify-end'>
+          <Button {...closeButtonProps} />
+        </div>
       </div>
       <div className='planner-card-wrapper flex-column justify-start h-100 w-100'>
-        <h2 className='title'>{props.name}</h2>
+        <h2 className='title mt-0'>{props.name}</h2>
         <p
           title={description}
-          className='short-description align-self-start m-0 p-1 w-50'
+          className='short-description align-self-start m-0 pl-2'
         >
           {description}
         </p>
