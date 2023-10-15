@@ -1,4 +1,4 @@
- [<img width="60" src="https://github-production-user-asset-6210df.s3.amazonaws.com/86263343/271469169-80a864f7-044e-4082-82ca-c62bff430ab2.png"/>](https://plan-eat-frontend.vercel.app/planners)
+ [<img width="60" src="https://github.com/Fedevs/PlanEatFrontend/assets/86263343/708f8770-127d-40ab-adff-0c8df03f522c"/>](https://plan-eat-frontend.vercel.app/planners)
  
 # Table of Contents
 1. [PlanEat (web mobile app)](#planeat-web-mobile-app)
@@ -60,8 +60,8 @@ On this screen, you can add all the meals you want to plan. You can create as ma
 
 1. ~~Create a PWA~~
 2. ~~Create ingredients page~~
-3. Implement state managment
-4. Create meal times page
+3. ~~Implement state managment~~
+4. ~~Create meal times page~~
 5. Add functionality to ADD button
    - Add planners
    - Add meals
