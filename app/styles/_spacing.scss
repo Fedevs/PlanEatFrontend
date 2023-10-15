@@ -27,7 +27,7 @@
 }
 
 // Padding Classes
-@for $i from 0 through 10 {
+@for $i from 0 through 12 {
   $padding-value: $i * 4px;
   .p-#{$i} {
     padding: $padding-value;
@@ -61,3 +61,6 @@
     gap: $gap-value;
   }
 }
+
+$dashboardHeight: 105px;
+$NavigationBarHeight: 105px;
