@@ -2,17 +2,19 @@
 
 import { useEffect } from "react";
 import { DndProvider } from "react-dnd";
+import { TouchBackend } from "react-dnd-touch-backend";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { MealTimesInterface } from "@/types/types";
-import { reorderMealTimesArray } from "@/app/utils/reorderMealTimesArray";
+import reorderMealTimesArray from "@/app/utils/reorderMealTimesArray";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 import {
   fetchInitialData,
   setOrder,
 } from "@/app/redux/features/mealTimesSlice";
 import MealTimeCardWithDnd from "@/app/components/MealTimeCardWithDnd/MealTimeCardWithDnd";
+import isTouchDevice from "@/app/utils/isTouchDevice";
 
-const MealTimes: React.FC = () => {
+export default function MealTimes() {
   const dispatch = useAppDispatch();
   const mealTimes = useAppSelector(
     (state) => state.mealTimes.data
@@ -34,7 +36,7 @@ const MealTimes: React.FC = () => {
   };
 
   return (
-    <DndProvider backend={HTML5Backend}>
+    <DndProvider backend={isTouchDevice() ? TouchBackend : HTML5Backend}>
       <section className='mt-3 flex-column gap-6'>
         <h3 style={{ fontSize: "14px" }}>
           These are the meals available when creating a planner
@@ -50,6 +52,4 @@ const MealTimes: React.FC = () => {
       </section>
     </DndProvider>
   );
-};
-
-export default MealTimes;
+}

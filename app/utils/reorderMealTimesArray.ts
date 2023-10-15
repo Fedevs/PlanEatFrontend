@@ -8,11 +8,11 @@ import { MealTimesInterface } from "@/types/types";
  * @returns An array with reordered elements.
  */
 
-export const reorderMealTimesArray = (
+export default function reorderMealTimesArray(
   list: Array<MealTimesInterface>,
   startIndex: number,
   endIndex: number
-): MealTimesInterface[] => {
+): MealTimesInterface[] {
   const result = Array.from(list);
   const [removed] = result.splice(startIndex, 1);
   result.splice(endIndex, 0, removed);
@@ -23,4 +23,4 @@ export const reorderMealTimesArray = (
   });
 
   return sortedResult;
-};
+}
