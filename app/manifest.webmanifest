@@ -1,7 +1,7 @@
 {
   "background_color": "#ffffff",
   "description": "A meal planner app",
-  "display": "minimal-ui",
+  "display": "fullscreen",
   "name": "PlanEat",
   "scope": "/",
   "short_name": "PlanEat",
