@@ -7,8 +7,8 @@ export default function PlannerCard(props: PlannerInterface) {
   const editButtonProps: ButtonProps = {
     action: "edit",
     svgOptions: {
-      height: 24,
-      width: 24,
+      height: 20,
+      width: 20,
     },
     ariaLabel: "Change any attribute from the planner",
     title: "Edit planner",
@@ -16,8 +16,8 @@ export default function PlannerCard(props: PlannerInterface) {
   const closeButtonProps: ButtonProps = {
     action: "close",
     svgOptions: {
-      height: 24,
-      width: 24,
+      height: 20,
+      width: 20,
     },
     ariaLabel: "Remove the planner from the list",
     title: "Delete planner",
@@ -29,7 +29,7 @@ export default function PlannerCard(props: PlannerInterface) {
   return (
     <div className='planner-card mx-2 my-5'>
       <div className='icons-container flex justify-end'>
-        <div className='btn-wrapper flex justify-end'>
+        <div className='btn-wrapper flex justify-end mr-6'>
           <Button {...editButtonProps} />
         </div>
         <div className='btn-wrapper flex justify-end'>
@@ -40,7 +40,7 @@ export default function PlannerCard(props: PlannerInterface) {
         <h2 className='title mt-0'>{props.name}</h2>
         <p
           title={description}
-          className='short-description align-self-start m-0 p-1 w-50'
+          className='short-description align-self-start m-0 px-1'
         >
           {description}
         </p>

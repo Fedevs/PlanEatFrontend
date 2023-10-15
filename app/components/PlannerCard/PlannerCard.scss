@@ -7,8 +7,8 @@
 
   .icons-container {
     .btn-wrapper {
-      width: 48px;
-      height: 48px;
+      width: 24px;
+      height: 24px;
     }
   }
 
@@ -23,8 +23,10 @@
     .short-description {
       font-size: 12px;
       overflow: hidden;
-      text-wrap: nowrap;
-      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 4;
+      margin-right: 100px;
     }
   }
 
