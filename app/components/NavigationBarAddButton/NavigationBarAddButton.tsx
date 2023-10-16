@@ -1,54 +1,38 @@
 "use client";
 
+import { join } from "path";
 import { usePathname } from "next/navigation";
 import AddIcon from "@/public/icons/add-icon.svg";
+import Link from "next/link";
 import "./NavigationBarAddButton.scss";
 
 export default function NavigationBarAddButton() {
   const pathName = usePathname();
 
-  const addPlannerAction = () => {
-    console.log("Add planner");
+  const linkMap: {
+    [key: string]: string;
+  } = {
+    "/planners": join(pathName, "addPlanner"),
+    "/meals": join(pathName, "addMeal"),
+    "/ingredients": join(pathName, "addIngredient"),
+    "/mealTimes": join(pathName, "addMealTime"),
   };
-
-  const addMealAction = () => {
-    console.log("Add meal");
-  };
-
-  const addIngredientAction = () => {
-    console.log("Add ingredient");
-  };
-
-  const addMealTimeAction = () => {
-    console.log("Add mealTime");
-  };
-
-  const actionMap: { [key: string]: () => void } = {
-    "/planners": addPlannerAction,
-    "/meals": addMealAction,
-    "/ingredients": addIngredientAction,
-    "/mealTimes": addMealTimeAction,
-  };
-
-  const handleButtonClick = () => {
-    const action = actionMap[pathName];
-    if (action) {
-      action();
-    } else {
-      throw new Error("No action found, please make sure you registered it");
-    }
-  };
+  const isDisabled: boolean = !linkMap[pathName];
 
   return (
     <button
       className='navigation-bar-add-button flex'
       aria-label='Add an item to the list'
       title='Add a new item'
-      onClick={handleButtonClick}
+      onClick={() => {}}
+      disabled={isDisabled}
+      aria-disabled={isDisabled}
     >
-      <span className='icon flex mb-4'>
-        <AddIcon />
-      </span>
+      <Link href={`${linkMap[pathName]}`} className='flex w-100 h-100'>
+        <span className='icon flex mb-4'>
+          <AddIcon />
+        </span>
+      </Link>
     </button>
   );
 }
