@@ -24,6 +24,7 @@ body {
     margin-bottom: calc($NavigationBarHeight + 15px);
     max-width: 500px;
     overflow: scroll;
+    width: 100%;
   }
 
   main::-webkit-scrollbar {
