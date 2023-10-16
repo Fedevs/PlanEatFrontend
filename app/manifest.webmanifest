@@ -1,8 +1,15 @@
 {
+  "id": "/planners",
   "background_color": "#fefefe",
   "description": "A meal planner app",
   "display": "fullscreen",
   "icons": [
+    {
+      "src": "/icon-98x74.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable monochrome"
+    },
     {
       "src": "/icon-192x192.png",
       "sizes": "192x192",
