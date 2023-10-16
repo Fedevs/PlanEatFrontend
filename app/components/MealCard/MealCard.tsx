@@ -10,8 +10,8 @@ export default async function MealCard(props: MealInterface) {
   const editButtonProps: ButtonProps = {
     action: "edit",
     svgOptions: {
-      height: 16,
-      width: 16,
+      height: 18,
+      width: 18,
     },
     ariaLabel: "Edit meal features",
     title: "Edit meal",
@@ -20,8 +20,8 @@ export default async function MealCard(props: MealInterface) {
   const closeButtonProps: ButtonProps = {
     action: "close",
     svgOptions: {
-      height: 16,
-      width: 16,
+      height: 18,
+      width: 18,
     },
     ariaLabel: "Remove the meal from the list",
     title: "Delete meal",
@@ -30,9 +30,13 @@ export default async function MealCard(props: MealInterface) {
   return (
     <div className='meal-card flex my-5'>
       <div className='meal-card-container h-75 p-3 flex-column justify-around '>
-        <div className='icons-container flex p-2'>
-          <Button {...editButtonProps} />
-          <Button {...closeButtonProps} />
+        <div className='icons-container flex pt-1'>
+          <div className='flex justify-end mr-6'>
+            <Button {...editButtonProps} />
+          </div>
+          <div className='flex justify-end'>
+            <Button {...closeButtonProps} />
+          </div>
         </div>
         <h2 className='title m-1'>{props.name}</h2>
         <p className='ingredients align-self-start'>
