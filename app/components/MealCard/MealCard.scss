@@ -37,7 +37,9 @@
     .ingredients {
       font-size: 12px;
       overflow: hidden;
-      max-height: 40%;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
     }
 
     .features {

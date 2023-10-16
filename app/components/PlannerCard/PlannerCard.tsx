@@ -40,7 +40,7 @@ export default function PlannerCard(props: PlannerInterface) {
         <h2 className='title mt-0'>{props.name}</h2>
         <p
           title={description}
-          className='short-description align-self-start m-0 pl-2'
+          className='short-description align-self-start m-0 pl-2 mb-1'
         >
           {description}
         </p>
