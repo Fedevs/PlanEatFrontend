@@ -1,0 +1,42 @@
+@import "@styles/styles";
+
+.dropdown {
+  position: relative;
+
+  .search-input {
+    border: none;
+    box-shadow: 0 0 4px 0 $black50;
+    border-radius: 8px;
+    background-color: $white;
+
+    &:focus {
+      outline: 1px solid $orange;
+      box-shadow: none;
+    }
+  }
+
+  .dropdown-menu {
+    display: none;
+    max-height: 150px;
+    overflow-y: auto;
+    width: 100%;
+  }
+
+  .show-dropdown-menu {
+    position: absolute;
+    background-color: $white;
+    border: 1px solid $orange;
+    border-top: 0;
+    top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 0;
+    border-radius: 0 0 8px 8px;
+
+    & > * {
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+  }
+}

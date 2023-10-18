@@ -1,0 +1,30 @@
+@import "@styles/styles";
+
+.add-meal {
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+
+  h1 {
+    text-align: center;
+  }
+
+  label {
+    font-weight: bold;
+    color: $black;
+  }
+
+  .input {
+    border: none;
+    font-size: 16px;
+    box-shadow: 0 0 4px 0 $black50;
+    border-radius: 8px;
+    background-color: $white;
+    width: 100%;
+
+    &:focus {
+      outline: 1px solid $orange;
+      box-shadow: none;
+    }
+  }
+}
