@@ -2,38 +2,43 @@
 
 .dropdown {
   position: relative;
+  border-radius: 8px;
+  box-shadow: 0 0 4px 0 $black25;
+  background-color: $white;
+  flex-wrap: wrap;
 
   .search-input {
-    border: none;
-    box-shadow: 0 0 4px 0 $black25;
     border-radius: 8px;
-    background-color: $white;
-  }
+    border: none;
+    width: 100%;
 
-  .focus-input {
-    outline: 1px solid $orange;
-    box-shadow: none;
+    &:focus {
+      outline: none;
+    }
   }
 
   .dropdown-menu {
+    background-color: $white;
+    border: 1px solid $orange;
     display: none;
     max-height: 150px;
     overflow-y: auto;
     width: 100%;
+    padding: 10px 0;
+    border-radius: 8px;
   }
 
   .show-dropdown-menu {
-    position: absolute;
-    background-color: $white;
-    border: 1px solid $orange;
-    top: 40px;
     display: flex;
     flex-direction: column;
-    padding: 10px 0;
-    border-radius: 8px;
 
     & > * {
       padding-left: 8px;
     }
   }
+}
+
+.focus-dropdown {
+  border: 1px solid $orange;
+  box-shadow: none;
 }

@@ -1,5 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import "./Dropdown.scss";
+import Tags from "../Tags/Tags";
+
+type tag = {
+  id: number;
+  name: string;
+};
 
 interface DropdownProps {
   searchTerm: string;
@@ -7,6 +13,8 @@ interface DropdownProps {
   placeholder: string;
   children: React.ReactNode;
   id: string;
+  selected: tag[];
+  deselectElement: (id: number) => void;
 }
 
 export default function Dropdown(props: DropdownProps) {
@@ -43,19 +51,34 @@ export default function Dropdown(props: DropdownProps) {
   }, []);
 
   return (
-    <div className='dropdown flex w-100' ref={dropdownRef}>
-      <input
-        type='text'
-        id={props.id}
-        className={`search-input w-100 p-2 ${isFocused && "focus-input"}`}
-        placeholder={props.placeholder}
-        value={props.searchTerm}
-        onChange={props.handleSearchChange}
-        onFocus={handleInputFocus}
-        onBlur={handleInputBlur}
-      />
+    <div
+      className={`dropdown search-input flex justify-start w-100 py-1 ${
+        isFocused && "focus-dropdown"
+      }`}
+      ref={dropdownRef}
+    >
+      {props.selected.map((ingredient) => (
+        <Tags
+          key={ingredient.id}
+          onDelete={() => props.deselectElement(ingredient.id)}
+          id={ingredient.id}
+          name={ingredient.name}
+        />
+      ))}
+      <div>
+        <input
+          type='text'
+          id={props.id}
+          className={`search-input p-2 `}
+          placeholder={props.placeholder}
+          value={props.searchTerm}
+          onChange={props.handleSearchChange}
+          onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
+        />
+      </div>
       <div
-        className={`dropdown-menu align-start justify-start ${
+        className={`dropdown-menu mt-5 align-start justify-start ${
           isFocused ? "show-dropdown-menu" : ""
         }`}
       >
