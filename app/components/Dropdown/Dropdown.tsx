@@ -1,6 +1,8 @@
-import { useEffect, useRef, useState } from "react";
-import "./Dropdown.scss";
+import { useEffect, useRef, useState, RefObject } from "react";
 import Tags from "../Tags/Tags";
+import ExpandLessIcon from "@/public/icons/expandLess-icon.svg";
+import ExpandMoreIcon from "@/public/icons/expandMore-icon.svg";
+import "./Dropdown.scss";
 
 type tag = {
   id: number;
@@ -19,8 +21,8 @@ interface DropdownProps {
 export default function Dropdown(props: DropdownProps) {
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const [inputWidth, setInputWidth] = useState<number>(1);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const dropdownRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
+  const inputRef: RefObject<HTMLInputElement> = useRef<HTMLInputElement>(null);
 
   const handleInputFocus = () => {
     setIsFocused(true);
@@ -51,8 +53,11 @@ export default function Dropdown(props: DropdownProps) {
     };
   }, []);
 
-  const handleDropdownClick = () => {
-    if (inputRef.current) {
+  const handleDropdownClick = (event: React.MouseEvent) => {
+    const target = event.target as HTMLInputElement;
+    if (target.id === "expand-less") {
+      setIsFocused(false);
+    } else if (inputRef.current) {
       inputRef.current.focus();
     }
   };
@@ -64,36 +69,49 @@ export default function Dropdown(props: DropdownProps) {
 
   return (
     <div
-      className='dropdown search-input flex gap-1 w-100 py-1'
+      className='dropdown search-input flex justify-between gap-1 w-100 py-1'
       ref={dropdownRef}
       onClick={handleDropdownClick}
     >
       <div
-        className={`flex justify-start w-100 gap-2 p-1 tags-input-wrapper ${
+        className={`w-100 flex justify-between tags-input-container ${
           isFocused ? "on-focus" : ""
         }`}
       >
-        {props.selected.map((ingredient) => (
-          <Tags
-            key={ingredient.id}
-            onDelete={() => props.deselectElement(ingredient.id)}
-            id={ingredient.id}
-            name={ingredient.name}
-          />
-        ))}
+        <div className={`flex justify-start gap-2 p-1 tags-input-wrapper `}>
+          {props.selected.map((ingredient) => (
+            <Tags
+              key={ingredient.id}
+              onDelete={() => props.deselectElement(ingredient.id)}
+              id={ingredient.id}
+              name={ingredient.name}
+            />
+          ))}
 
-        <input
-          type='text'
-          ref={inputRef}
-          id={props.id}
-          className={`search-input p-2`}
-          value={props.searchTerm}
-          onChange={handleInputChange}
-          onFocus={handleInputFocus}
-          onBlur={handleInputBlur}
-          style={{ width: inputWidth }}
-        />
+          <input
+            type='text'
+            ref={inputRef}
+            id={props.id}
+            className={`search-input p-2`}
+            value={props.searchTerm}
+            onChange={handleInputChange}
+            onFocus={handleInputFocus}
+            onBlur={handleInputBlur}
+            style={{ width: inputWidth }}
+          />
+        </div>
+        <div
+          className='expand-container flex p-3'
+          onClick={() => setIsFocused(!isFocused)}
+        >
+          {isFocused ? (
+            <ExpandLessIcon id='expand-less' />
+          ) : (
+            <ExpandMoreIcon id='expand-more' />
+          )}
+        </div>
       </div>
+
       {isFocused && (
         <div className='dropdown-menu align-start justify-start'>
           {props.children}

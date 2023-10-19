@@ -155,17 +155,20 @@ export default function AddMeal() {
     const filteredIngredients = allIngredients.filter((ingredient) =>
       ingredient.name.toLowerCase().includes(searchTerm)
     );
-    console.log("hola");
 
     setFilteredIngredients(filteredIngredients);
   };
 
   const handleIngredientSelect = (ingredient: IngredientInterface) => {
-    console.log("ss");
-    setSelectedIngredients([...selectedIngredients, ingredient]);
-    setFilteredIngredients(
-      filteredIngredients.filter((item) => item !== ingredient)
+    const updatedSelectedIngredients = [...selectedIngredients, ingredient];
+    setSelectedIngredients(updatedSelectedIngredients);
+
+    const updatedFilteredIngredients = allIngredients.filter(
+      (item) =>
+        !updatedSelectedIngredients.some((selected) => selected.id === item.id)
     );
+    setFilteredIngredients(updatedFilteredIngredients);
+    setSearchTerm("");
   };
 
   const handleIngredientDeselect = (id: number) => {
@@ -218,7 +221,7 @@ export default function AddMeal() {
                 </label>
               ))
             ) : (
-              <p>
+              <p className='flex'>
                 <b>No ingredients found</b>
               </p>
             )}

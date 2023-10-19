@@ -4,12 +4,18 @@
   position: relative;
   border-radius: 8px;
   flex-wrap: wrap;
+  cursor: pointer;
 
-  .tags-input-wrapper {
+  .tags-input-container {
     border-radius: 8px;
     box-shadow: 0 0 4px 0 $black25;
     background-color: $white;
-    flex-wrap: wrap;
+
+    .tags-input-wrapper {
+      flex-wrap: wrap;
+      width: 90%;
+      box-shadow: 1px 0 $black25;
+    }
 
     .search-input {
       border-radius: 8px;
@@ -20,10 +26,28 @@
         outline: none;
       }
     }
+
+    .expand-container {
+      svg {
+        fill: $black25;
+      }
+    }
   }
 
   .on-focus {
     border: 1px solid $orange;
+    box-shadow: none;
+
+    .tags-input-wrapper {
+      border-right: 1px solid $orange;
+      box-shadow: none;
+    }
+
+    .expand-container {
+      svg {
+        fill: $orange;
+      }
+    }
   }
 
   .dropdown-menu {
@@ -37,6 +61,16 @@
     border-radius: 8px;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 0 2px 0 $black25;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $orange;
+      border-radius: 20px;
+    }
 
     & > * {
       padding-left: 8px;
