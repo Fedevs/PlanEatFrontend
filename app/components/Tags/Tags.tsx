@@ -10,7 +10,7 @@ interface TagsProps {
 export default function Tags(props: TagsProps) {
   return (
     <div
-      className='tags flex justify-start p-1 ml-1 gap-1'
+      className='tags flex justify-start p-1 gap-1'
       onClick={() => props.onDelete(props.id)}
     >
       <span>{props.name}</span>

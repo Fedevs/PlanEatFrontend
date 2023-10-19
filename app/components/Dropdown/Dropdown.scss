@@ -3,17 +3,22 @@
 .dropdown {
   position: relative;
   border-radius: 8px;
-  box-shadow: 0 0 4px 0 $black25;
-  background-color: $white;
   flex-wrap: wrap;
 
-  .search-input {
+  .tags-input-wrapper {
     border-radius: 8px;
-    border: none;
-    width: 100%;
+    box-shadow: 0 0 4px 0 $black25;
+    border: 1px solid $orange;
+    background-color: $white;
+    flex-wrap: wrap;
 
-    &:focus {
-      outline: none;
+    .search-input {
+      border-radius: 8px;
+      border: none;
+
+      &:focus {
+        outline: none;
+      }
     }
   }
 
@@ -26,9 +31,6 @@
     width: 100%;
     padding: 10px 0;
     border-radius: 8px;
-  }
-
-  .show-dropdown-menu {
     display: flex;
     flex-direction: column;
 
@@ -36,9 +38,4 @@
       padding-left: 8px;
     }
   }
-}
-
-.focus-dropdown {
-  border: 1px solid $orange;
-  box-shadow: none;
 }

@@ -52,24 +52,23 @@ export default function Dropdown(props: DropdownProps) {
 
   return (
     <div
-      className={`dropdown search-input flex justify-start w-100 py-1 ${
-        isFocused && "focus-dropdown"
-      }`}
+      className={`dropdown search-input flex gap-1 w-100 py-1`}
       ref={dropdownRef}
     >
-      {props.selected.map((ingredient) => (
-        <Tags
-          key={ingredient.id}
-          onDelete={() => props.deselectElement(ingredient.id)}
-          id={ingredient.id}
-          name={ingredient.name}
-        />
-      ))}
-      <div>
+      <div className='flex justify-start w-100 gap-2 p-1 tags-input-wrapper'>
+        {props.selected.map((ingredient) => (
+          <Tags
+            key={ingredient.id}
+            onDelete={() => props.deselectElement(ingredient.id)}
+            id={ingredient.id}
+            name={ingredient.name}
+          />
+        ))}
+
         <input
           type='text'
           id={props.id}
-          className={`search-input p-2 `}
+          className={`search-input p-2`}
           placeholder={props.placeholder}
           value={props.searchTerm}
           onChange={props.handleSearchChange}
@@ -77,13 +76,11 @@ export default function Dropdown(props: DropdownProps) {
           onBlur={handleInputBlur}
         />
       </div>
-      <div
-        className={`dropdown-menu mt-5 align-start justify-start ${
-          isFocused ? "show-dropdown-menu" : ""
-        }`}
-      >
-        {props.children}
-      </div>
+      {isFocused && (
+        <div className='dropdown-menu align-start justify-start'>
+          {props.children}
+        </div>
+      )}
     </div>
   );
 }
