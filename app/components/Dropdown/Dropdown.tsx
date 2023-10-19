@@ -68,7 +68,11 @@ export default function Dropdown(props: DropdownProps) {
       ref={dropdownRef}
       onClick={handleDropdownClick}
     >
-      <div className='flex justify-start w-100 gap-2 p-1 tags-input-wrapper'>
+      <div
+        className={`flex justify-start w-100 gap-2 p-1 tags-input-wrapper ${
+          isFocused ? "on-focus" : ""
+        }`}
+      >
         {props.selected.map((ingredient) => (
           <Tags
             key={ingredient.id}
