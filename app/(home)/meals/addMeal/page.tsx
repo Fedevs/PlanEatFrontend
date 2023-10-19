@@ -202,7 +202,6 @@ export default function AddMeal() {
             handleSearchChange={handleSearchChange}
             id={"ingredients"}
             searchTerm={searchTerm}
-            placeholder='Filter...'
             selected={selectedIngredients}
             deselectElement={handleIngredientDeselect}
           >

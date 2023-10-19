@@ -10,7 +10,6 @@ type tag = {
 interface DropdownProps {
   searchTerm: string;
   handleSearchChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  placeholder: string;
   children: React.ReactNode;
   id: string;
   selected: tag[];
@@ -19,7 +18,9 @@ interface DropdownProps {
 
 export default function Dropdown(props: DropdownProps) {
   const [isFocused, setIsFocused] = useState<boolean>(false);
+  const [inputWidth, setInputWidth] = useState<number>(1);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleInputFocus = () => {
     setIsFocused(true);
@@ -50,10 +51,22 @@ export default function Dropdown(props: DropdownProps) {
     };
   }, []);
 
+  const handleDropdownClick = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputWidth((event.target.value.length + 1) * 8);
+    props.handleSearchChange(event);
+  };
+
   return (
     <div
-      className={`dropdown search-input flex gap-1 w-100 py-1`}
+      className='dropdown search-input flex gap-1 w-100 py-1'
       ref={dropdownRef}
+      onClick={handleDropdownClick}
     >
       <div className='flex justify-start w-100 gap-2 p-1 tags-input-wrapper'>
         {props.selected.map((ingredient) => (
@@ -67,13 +80,14 @@ export default function Dropdown(props: DropdownProps) {
 
         <input
           type='text'
+          ref={inputRef}
           id={props.id}
           className={`search-input p-2`}
-          placeholder={props.placeholder}
           value={props.searchTerm}
-          onChange={props.handleSearchChange}
+          onChange={handleInputChange}
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
+          style={{ width: inputWidth }}
         />
       </div>
       {isFocused && (
