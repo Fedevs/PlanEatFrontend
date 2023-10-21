@@ -11,9 +11,12 @@
 4. [Roadmap 2023](#roadmap-2023)
     - [October](#october)
     - [November](#november)
-5. [Stats](#stats)
-6. [Backend](#backend)
-7. [Contact](#contact)
+    - [December](#december)
+5. [Roadmap 2024](#roadmap-2024)
+    - [January](#january)
+6. [Stats](#stats)
+7. [Backend](#backend)
+8. [Contact](#contact)
 
 # PlanEat (web mobile app)
 
@@ -63,16 +66,25 @@ On this screen, you can add all the meals you want to plan. You can create as ma
 3. ~~Implement state managment~~
 4. ~~Create meal times page~~
 5. Add functionality to ADD button
-   - Add planners
    - Add meals
-   - Add ingredients
    - Add meal times
-6. Add functionality to SEARCH button
-7. Add functionality to EDIT and DELETE buttons
-8. Release v0.1.0alpha
-9. Visual improvements like loading screen, empty state
 
 ## November
+
+1. Add functionality to ADD button
+   - Add planners
+   - Add ingredients
+2. Add functionality to SEARCH button
+3. Add functionality to EDIT and DELETE buttons
+
+## December
+
+1. Visual improvements like loading screen, empty state
+2. Release v0.1.0alpha
+
+# Roadmap 2024
+
+## January
 
 1. User Login
 2. Automatic planner creation
