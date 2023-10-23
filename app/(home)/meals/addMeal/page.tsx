@@ -1,19 +1,23 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IngredientInterface } from "@/types/types";
 import Dropdown from "@/app/components/Dropdown/Dropdown";
 import AddIngredientsQuantity from "@/app/components/AddIngredientsQuantity/AddIngredientsQuantity";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 import {
+  setAllIngredients,
   setFilteredIngredients,
   setSearchTerm,
   setSelectedIngredients,
 } from "@/app/redux/features/addMealFormSlice";
 import "./addMeal.scss";
+import createMeal from "@/app/hooks/createMeal";
+import createMealIngredient from "@/app/hooks/CreateMealIngredient";
 
 export default function AddMeal() {
   const [name, setName] = useState<string>("");
+  const [submitError, setSubmitError] = useState<string>("");
   const dispatch = useAppDispatch();
   const allIngredients = useAppSelector(
     (state) => state.addMealForm.allIngredients
@@ -26,14 +30,14 @@ export default function AddMeal() {
   );
   const searchTerm = useAppSelector((state) => state.addMealForm.searchTerm);
 
-  // useEffect(() => {
-  //   fetch("/api/ingredients")
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       setAllIngredients(res);
-  //       setFilteredIngredients(res);
-  //     });
-  // }, []);
+  useEffect(() => {
+    fetch("/api/ingredients")
+      .then((res) => res.json())
+      .then((res) => {
+        dispatch(setAllIngredients(res));
+        dispatch(setFilteredIngredients(res));
+      });
+  }, [dispatch]);
 
   /**
    * Adds an element to an array and returns the new array.
@@ -169,10 +173,30 @@ export default function AddMeal() {
     dispatch(setSelectedIngredients(newSelectedIngredients));
   };
 
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSubmitError("");
+
+    if (!selectedIngredients.length) {
+      setSubmitError("You have to choose at least 1 ingredient");
+      return;
+    }
+    const meal = await createMeal(name);
+    if (meal.id) {
+      selectedIngredients.map(async ({ id, quantity }) => {
+        await createMealIngredient({
+          mealId: meal.id,
+          ingredientId: id,
+          quantity: quantity!,
+        });
+      });
+    }
+  };
+
   return (
     <div className='add-meal'>
       <h1>Add Meal</h1>
-      <form onSubmit={() => {}} className='align-self-start w-100'>
+      <form onSubmit={handleSubmit} className='align-self-start w-100'>
         <div className='flex w-100 justify-start gap-2 mb-6'>
           <label htmlFor='name'>Name</label>
           <input
@@ -226,6 +250,8 @@ export default function AddMeal() {
             />
           ))}
         </div>
+        {submitError}
+        <button type='submit'>Confirm</button>
       </form>
     </div>
   );

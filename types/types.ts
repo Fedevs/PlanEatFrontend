@@ -16,7 +16,7 @@ export interface MealTimesInterface {
   order?: number;
 }
 
-interface mealIngredientInterface {
+export interface mealIngredientInterface {
   mealId: number;
   ingredientId: number;
   quantity: number;
