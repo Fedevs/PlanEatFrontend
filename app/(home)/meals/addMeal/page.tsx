@@ -5,26 +5,26 @@ import { IngredientInterface } from "@/types/types";
 import Dropdown from "@/app/components/Dropdown/Dropdown";
 import AddIngredientsQuantity from "@/app/components/AddIngredientsQuantity/AddIngredientsQuantity";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
-import "./addMeal.scss";
 import {
   setFilteredIngredients,
   setSearchTerm,
   setSelectedIngredients,
 } from "@/app/redux/features/addMealFormSlice";
+import "./addMeal.scss";
 
 export default function AddMeal() {
   const [name, setName] = useState<string>("");
   const dispatch = useAppDispatch();
   const allIngredients = useAppSelector(
-    (state) => state.ingredients.allIngredients
+    (state) => state.addMealForm.allIngredients
   );
   const filteredIngredients = useAppSelector(
-    (state) => state.ingredients.filteredIngredients
+    (state) => state.addMealForm.filteredIngredients
   );
   const selectedIngredients = useAppSelector(
-    (state) => state.ingredients.selectedIngredients
+    (state) => state.addMealForm.selectedIngredients
   );
-  const searchTerm = useAppSelector((state) => state.ingredients.searchTerm);
+  const searchTerm = useAppSelector((state) => state.addMealForm.searchTerm);
 
   // useEffect(() => {
   //   fetch("/api/ingredients")
@@ -35,6 +35,36 @@ export default function AddMeal() {
   //     });
   // }, []);
 
+  /**
+   * Adds an element to an array and returns the new array.
+   * @param {IngredientInterface[]} array - The array to which the element will be added.
+   * @param {IngredientInterface} element - The element to be added to the array.
+   * @returns {IngredientInterface[]} The new array with the added element.
+   */
+  const addItemToArray = (
+    array: IngredientInterface[],
+    element: IngredientInterface
+  ) => {
+    return [...array, element];
+  };
+
+  /**
+   * Removes an item from an array and returns the new array.
+   * @param {IngredientInterface[]} array - The array from which the item will be removed.
+   * @param {IngredientInterface} item - The item to be removed from the array.
+   * @returns {IngredientInterface[]} The new array with the item removed.
+   */
+  const removeItemFromArray = (
+    array: IngredientInterface[],
+    item: IngredientInterface
+  ) => {
+    return array.filter((element) => element !== item);
+  };
+
+  /**
+   * Handles the change in the search field and filters a list of ingredients based on the search term.
+   * @param {React.ChangeEvent<HTMLInputElement>} event - The user input change event.
+   */
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const searchTerm = event.target.value.toLowerCase();
     dispatch(setSearchTerm(searchTerm));
@@ -46,32 +76,97 @@ export default function AddMeal() {
     dispatch(setFilteredIngredients(filteredIngredients));
   };
 
-  const handleIngredientSelect = (ingredient: IngredientInterface) => {
-    const updatedSelectedIngredients = [...selectedIngredients, ingredient];
-    dispatch(setSelectedIngredients(updatedSelectedIngredients));
+  /**
+   * Updates the selected and filtered ingredient lists and dispatches corresponding actions to the Redux store.
+   * @param {IngredientInterface[]} selected - The updated array of selected ingredients.
+   * @param {IngredientInterface[]} filtered - The updated array of filtered ingredients.
+   */
+  const updateSelectedAndFilteredIngredients = (
+    selected: IngredientInterface[],
+    filtered: IngredientInterface[]
+  ) => {
+    dispatch(setSelectedIngredients(selected));
+    dispatch(setFilteredIngredients(filtered));
+  };
 
-    const updatedFilteredIngredients = allIngredients.filter(
-      (item) =>
-        !updatedSelectedIngredients.some((selected) => selected.id === item.id)
+  /**
+   * Handles the selection of an ingredient and updates the selected and filtered ingredient lists accordingly.
+   * @param {IngredientInterface} ingredient - The ingredient to be selected.
+   */
+  const handleIngredientSelect = (ingredient: IngredientInterface) => {
+    const newSelectedIngredients = addItemToArray(
+      selectedIngredients,
+      ingredient
     );
-    dispatch(setFilteredIngredients(updatedFilteredIngredients));
+
+    const newFilteredIngredients = removeItemFromArray(
+      filteredIngredients,
+      ingredient
+    );
+
+    updateSelectedAndFilteredIngredients(
+      newSelectedIngredients,
+      newFilteredIngredients
+    );
+
     dispatch(setSearchTerm(""));
   };
 
+  /**
+   * Handles the deselection of a selected ingredient and updates the selected and filtered ingredient lists accordingly.
+   * @param {number} id - The ID of the ingredient to be deselected.
+   */
   const handleIngredientDeselect = (id: number) => {
-    const ingredientToDeselect = allIngredients.find(
+    let ingredient = selectedIngredients.find(
       (ingredient) => ingredient.id === id
     );
-    if (ingredientToDeselect) {
-      dispatch(
-        setSelectedIngredients(
-          selectedIngredients.filter((item) => item !== ingredientToDeselect)
-        )
+    if (ingredient) {
+      const newSelectedIngredients = removeItemFromArray(
+        selectedIngredients,
+        ingredient
       );
-      dispatch(
-        setFilteredIngredients([...filteredIngredients, ingredientToDeselect])
+
+      // Extract the quantity from the ingredient to be deselected and keep the rest of the properties
+      const { quantity, ...rest } = ingredient;
+      ingredient = rest;
+      const newFilteredIngredients = addItemToArray(
+        filteredIngredients,
+        ingredient
+      );
+      updateSelectedAndFilteredIngredients(
+        newSelectedIngredients,
+        newFilteredIngredients
       );
     }
+  };
+
+  /**
+   * Handles the change in quantity for a selected ingredient and updates the corresponding ingredient's quantity.
+   * @param {React.ChangeEvent<HTMLInputElement>} event - The event corresponding to the change in quantity input.
+   * @param {number} id - The ID of the ingredient whose quantity is being changed.
+   */
+  const handleOnQuantityChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    id: number
+  ) => {
+    const quantity = parseInt(event.target.value);
+    const index = selectedIngredients.findIndex(
+      (ingredient) => ingredient.id === id
+    );
+
+    if (index === -1) {
+      return;
+    }
+    const updatedIngredients = [...selectedIngredients];
+    const updatedIngredient = {
+      ...selectedIngredients[index],
+      quantity: quantity,
+    };
+
+    updatedIngredients[index] = updatedIngredient;
+
+    const newSelectedIngredients = updatedIngredients;
+    dispatch(setSelectedIngredients(newSelectedIngredients));
   };
 
   return (
@@ -84,6 +179,7 @@ export default function AddMeal() {
             className='input p-2 my-1'
             id='name'
             type='text'
+            required
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder='Pasta with...'
@@ -101,7 +197,10 @@ export default function AddMeal() {
           >
             {filteredIngredients.length ? (
               filteredIngredients.map((ingredient) => (
-                <label key={ingredient.id} className='dropdown-option py-1'>
+                <label
+                  key={`dropdown-${ingredient.id}`}
+                  className='dropdown-option py-1'
+                >
                   <input
                     type='checkbox'
                     style={{ display: "none" }}
@@ -117,6 +216,15 @@ export default function AddMeal() {
               </p>
             )}
           </Dropdown>
+        </div>
+        <div className='mt-3 quantity-container gap-2'>
+          {selectedIngredients.map((ingredient) => (
+            <AddIngredientsQuantity
+              key={`quantity-${ingredient.id}`}
+              ingredient={ingredient}
+              onChange={handleOnQuantityChange}
+            />
+          ))}
         </div>
       </form>
     </div>

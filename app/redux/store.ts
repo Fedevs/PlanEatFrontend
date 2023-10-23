@@ -4,7 +4,7 @@ import addMealFormReducer from "./features/addMealFormSlice";
 import { addOrderToMealTimes, logger } from "../middlewares";
 
 export const store = configureStore({
-  reducer: { mealTimes: mealTimesReducer, ingredients: addMealFormReducer },
+  reducer: { mealTimes: mealTimesReducer, addMealForm: addMealFormReducer },
   devTools: process.env.NODE_ENV !== "production",
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false })

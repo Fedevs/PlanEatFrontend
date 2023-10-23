@@ -36,4 +36,9 @@
       background-color: $orange25;
     }
   }
+
+  .quantity-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  }
 }
