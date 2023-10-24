@@ -1,7 +1,7 @@
 // proxy
 
 export async function GET(): Promise<Response> {
-  const url = `${process.env.BASE_URL}ingredients`;
+  const url = `${process.env.BASE_URL}ingredients?pageSize=20`;
   try {
     const fetchedData = await fetch(url);
     const data = await fetchedData.json();
