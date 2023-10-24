@@ -1,34 +1,37 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { IngredientInterface } from "@/types/types";
 import Dropdown from "@/app/components/Dropdown/Dropdown";
 import AddIngredientsQuantity from "@/app/components/AddIngredientsQuantity/AddIngredientsQuantity";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 import {
   setAllIngredients,
+  setError,
   setFilteredIngredients,
+  setLoading,
+  setMealName,
   setSearchTerm,
   setSelectedIngredients,
 } from "@/app/redux/features/addMealFormSlice";
 import "./addMeal.scss";
 import createMeal from "@/app/hooks/createMeal";
 import createMealIngredient from "@/app/hooks/CreateMealIngredient";
+import Link from "next/link";
 
 export default function AddMeal() {
-  const [name, setName] = useState<string>("");
-  const [submitError, setSubmitError] = useState<string>("");
+  const router = useRouter();
   const dispatch = useAppDispatch();
-  const allIngredients = useAppSelector(
-    (state) => state.addMealForm.allIngredients
-  );
-  const filteredIngredients = useAppSelector(
-    (state) => state.addMealForm.filteredIngredients
-  );
-  const selectedIngredients = useAppSelector(
-    (state) => state.addMealForm.selectedIngredients
-  );
-  const searchTerm = useAppSelector((state) => state.addMealForm.searchTerm);
+  const {
+    allIngredients,
+    filteredIngredients,
+    selectedIngredients,
+    searchTerm,
+    mealName,
+    error,
+    loading,
+  } = useAppSelector((state) => state.addMealForm);
 
   useEffect(() => {
     fetch("/api/ingredients")
@@ -38,6 +41,15 @@ export default function AddMeal() {
         dispatch(setFilteredIngredients(res));
       });
   }, [dispatch]);
+
+  const resetToInitialState = () => {
+    dispatch(setMealName(""));
+    dispatch(setSearchTerm(""));
+    dispatch(setSelectedIngredients([]));
+    dispatch(setFilteredIngredients(allIngredients));
+    dispatch(setError(null));
+    dispatch(setLoading(false));
+  };
 
   /**
    * Adds an element to an array and returns the new array.
@@ -175,42 +187,71 @@ export default function AddMeal() {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmitError("");
+    dispatch(setError(""));
+    dispatch(setLoading(true));
 
     if (!selectedIngredients.length) {
-      setSubmitError("You have to choose at least 1 ingredient");
+      dispatch(setError("You have to choose at least 1 ingredient"));
+      dispatch(setLoading(false));
       return;
     }
-    const meal = await createMeal(name);
-    if (meal.id) {
-      selectedIngredients.map(async ({ id, quantity }) => {
-        await createMealIngredient({
-          mealId: meal.id,
-          ingredientId: id,
-          quantity: quantity!,
+
+    try {
+      const meal = await createMeal(mealName);
+      if (meal.error?.length && meal.error[0].message) {
+        dispatch(setError(meal.error[0].message));
+        dispatch(setLoading(false));
+        return;
+      }
+
+      if (meal.id) {
+        selectedIngredients.map(async ({ id, quantity }) => {
+          try {
+            await createMealIngredient({
+              mealId: meal.id,
+              ingredientId: id,
+              quantity: quantity!,
+            });
+          } catch (error) {
+            dispatch(setLoading(false));
+            throw new Error(`Server unavailable, try again later ${error}`);
+          }
         });
-      });
+      }
+    } catch (error) {
+      dispatch(setLoading(false));
+      throw new Error(`Server unavailable, try again later ${error}`);
     }
+
+    dispatch(setLoading(false));
+    router.push("/meals");
+  };
+
+  const handleCancel = () => {
+    resetToInitialState();
   };
 
   return (
-    <div className='add-meal'>
+    <div className='add-meal h-100'>
       <h1>Add Meal</h1>
-      <form onSubmit={handleSubmit} className='align-self-start w-100'>
+      <form
+        onSubmit={handleSubmit}
+        className='align-self-start w-100 h-100 flex-column justify-start gap-3'
+      >
         <div className='flex w-100 justify-start gap-2 mb-6'>
-          <label htmlFor='name'>Name</label>
+          <label htmlFor='name'>Name*</label>
           <input
             className='input p-2 my-1'
             id='name'
             type='text'
             required
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={mealName}
+            onChange={(e) => dispatch(setMealName(e.target.value))}
             placeholder='Pasta with...'
           />
         </div>
         <div className='flex-column align-start gap-2 w-100'>
-          <label htmlFor='ingredients'>Ingredients</label>
+          <label htmlFor='ingredients'>Ingredients*</label>
 
           <Dropdown
             handleSearchChange={handleSearchChange}
@@ -241,7 +282,7 @@ export default function AddMeal() {
             )}
           </Dropdown>
         </div>
-        <div className='mt-3 quantity-container gap-2'>
+        <div className='quantity-container gap-2 w-100'>
           {selectedIngredients.map((ingredient) => (
             <AddIngredientsQuantity
               key={`quantity-${ingredient.id}`}
@@ -250,8 +291,28 @@ export default function AddMeal() {
             />
           ))}
         </div>
-        {submitError}
-        <button type='submit'>Confirm</button>
+        {error ? <p className='error w-100'>{error}</p> : ""}
+
+        <div className='action-buttons flex justify-around mt-3 w-100'>
+          <button
+            className='cancel-button p-3'
+            title='Cancel'
+            aria-label='Cancel the creation of the meal'
+            onClick={handleCancel}
+          >
+            <Link href={"/meals"}>Cancel</Link>
+          </button>
+          <button
+            className='confirm-button p-3'
+            title='Confirm'
+            type='submit'
+            aria-label='Create the new meal'
+            disabled={loading}
+            aria-disabled={loading}
+          >
+            Confirm
+          </button>
+        </div>
       </form>
     </div>
   );

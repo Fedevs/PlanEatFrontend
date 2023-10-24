@@ -1,6 +1,5 @@
 "use client";
 
-import { join } from "path";
 import { usePathname } from "next/navigation";
 import AddIcon from "@/public/icons/add-icon.svg";
 import Link from "next/link";
@@ -12,10 +11,10 @@ export default function NavigationBarAddButton() {
   const linkMap: {
     [key: string]: string;
   } = {
-    "/planners": join(pathName, "addPlanner"),
-    "/meals": join(pathName, "addMeal"),
-    "/ingredients": join(pathName, "addIngredient"),
-    "/mealTimes": join(pathName, "addMealTime"),
+    "/planners": "/planners/addPlanner",
+    "/meals": "/meals/addMeal",
+    "/ingredients": "/ingredients/addIngredient",
+    "/mealTimes": "/mealTimes/addMealTime",
   };
   const isDisabled: boolean = !linkMap[pathName];
 

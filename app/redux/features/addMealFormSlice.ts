@@ -125,6 +125,7 @@ import { IngredientInterface } from "@/types/types";
 // ];
 
 interface initialState {
+  mealName: string;
   allIngredients: IngredientInterface[];
   selectedIngredients: IngredientInterface[];
   filteredIngredients: IngredientInterface[];
@@ -133,6 +134,7 @@ interface initialState {
   error: string | null;
 }
 const initialState: initialState = {
+  mealName: "",
   allIngredients: [],
   selectedIngredients: [],
   filteredIngredients: [],
@@ -145,6 +147,9 @@ const addMealFormSlice = createSlice({
   name: "addMealFormSlice",
   initialState,
   reducers: {
+    setMealName: (state, action: PayloadAction<string>) => {
+      state.mealName = action.payload;
+    },
     setSearchTerm: (state, action: PayloadAction<string>) => {
       state.searchTerm = action.payload;
     },
@@ -166,13 +171,22 @@ const addMealFormSlice = createSlice({
     ) => {
       state.selectedIngredients = action.payload;
     },
+    setLoading: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
+    },
+    setError: (state, action: PayloadAction<string | null>) => {
+      state.error = action.payload;
+    },
   },
 });
 
 export const {
+  setMealName,
   setSearchTerm,
   setAllIngredients,
   setFilteredIngredients,
   setSelectedIngredients,
+  setLoading,
+  setError,
 } = addMealFormSlice.actions;
 export default addMealFormSlice.reducer;
