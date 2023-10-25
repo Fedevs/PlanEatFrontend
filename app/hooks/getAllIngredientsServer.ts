@@ -1,9 +1,9 @@
 import { IngredientInterface } from "@/types/types";
 
-export default async function getAllIngredients(): Promise<
+export default async function getAllIngredientsServer(): Promise<
   IngredientInterface[]
 > {
-  const url = `${process.env.BASE_URL}/api/ingredients`;
+  const url = `${process.env.BASE_API_URL}/ingredients?pageSize=20`;
   try {
     const res = await fetch(url);
     if (res.status !== 200) {

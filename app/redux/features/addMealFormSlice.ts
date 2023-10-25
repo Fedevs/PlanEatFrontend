@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IngredientInterface } from "@/types/types";
-import getAllIngredients from "@/app/hooks/getAllIngredients";
+import getAllIngredientsClient from "@/app/hooks/getAllIngredientsClient";
 
 interface initialState {
   mealName: string;
@@ -25,7 +25,7 @@ export const fetchInitialData = createAsyncThunk(
   "addMealFormSlice/fetchInitialData",
   async () => {
     try {
-      const response = await getAllIngredients();
+      const response = await getAllIngredientsClient();
       return response;
     } catch (error) {
       throw new Error("failed fetching ingredients");
