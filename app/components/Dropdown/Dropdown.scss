@@ -4,12 +4,12 @@
   position: relative;
   border-radius: 8px;
   flex-wrap: wrap;
-  cursor: pointer;
 
   .tags-input-container {
     border-radius: 8px;
     box-shadow: 0 0 4px 0 $black25;
     background-color: $white;
+    cursor: text;
 
     .tags-input-wrapper {
       flex-wrap: wrap;
@@ -28,6 +28,8 @@
     }
 
     .expand-container {
+      cursor: pointer;
+
       svg {
         fill: $black25;
       }
