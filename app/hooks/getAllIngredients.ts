@@ -11,6 +11,7 @@ export default async function getAllIngredients(): Promise<
     }
     return res.json();
   } catch (error) {
+    console.log(error);
     throw new Error("Failed to fetch ingredients");
   }
 }
