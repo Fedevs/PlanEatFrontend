@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export async function POST(request: Request) {
   const { name } = await request.json();
   try {
-    const url = `${process.env.BASE_URL}meals`;
+    const url = `${process.env.BASE_API_URL}meals`;
     const response = await fetch(url, {
       method: "POST",
       headers: {

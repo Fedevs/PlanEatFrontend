@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export async function POST(request: Request) {
   const { mealId, ingredientId, quantity } = await request.json();
   try {
-    const url = `${process.env.BASE_URL}/meals/${mealId}/ingredients`;
+    const url = `${process.env.BASE_API_URL}/meals/${mealId}/ingredients`;
     const response = await fetch(url, {
       method: "POST",
       headers: {

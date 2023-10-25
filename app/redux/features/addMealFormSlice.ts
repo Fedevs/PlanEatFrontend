@@ -24,8 +24,12 @@ const initialState: initialState = {
 export const fetchInitialData = createAsyncThunk(
   "addMealFormSlice/fetchInitialData",
   async () => {
-    const response = await getAllIngredients();
-    return response;
+    try {
+      const response = await getAllIngredients();
+      return response;
+    } catch (error) {
+      throw new Error("failed fetching ingredients");
+    }
   }
 );
 

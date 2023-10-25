@@ -25,7 +25,7 @@ const nextConfig = withPWA({
     ];
   },
   env: {
-    BASE_URL: process.env.BASE_URL,
+    BASE_API_URL: process.env.BASE_API_URL,
   },
 });
 
