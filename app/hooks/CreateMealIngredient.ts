@@ -5,7 +5,7 @@ export default async function createMealIngredient({
   ingredientId,
   quantity,
 }: mealIngredientInterface) {
-  const url = `${process.env.BASE_URL}/api/meals/ingredients`;
+  const url = `${process.env.BASE_URL}api/meals/ingredients`;
 
   try {
     const response = await fetch(url, {
