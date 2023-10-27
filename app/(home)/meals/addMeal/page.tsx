@@ -116,7 +116,6 @@ export default function AddMeal() {
       selectedIngredients,
       ingredient
     );
-
     const newFilteredIngredients = removeItemsFromArray(
       allIngredients,
       newSelectedIngredients

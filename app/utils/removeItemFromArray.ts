@@ -5,7 +5,7 @@
  * @returns {any[]} The new array with the item removed.
  */
 export function removeItemFromArray(array: any[], item: any): any[] {
-  return array.filter((element) => element !== item);
+  return array.filter((element) => element.id !== item.id);
 }
 
 /**
@@ -15,5 +15,7 @@ export function removeItemFromArray(array: any[], item: any): any[] {
  * @returns A new array with the specified items removed.
  */
 export function removeItemsFromArray(array: any[], items: any[]): any[] {
-  return array.filter((element) => !items.includes(element));
+  return array.filter(
+    (element) => !items.some((item) => item.id === element.id)
+  );
 }
