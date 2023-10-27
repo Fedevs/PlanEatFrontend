@@ -23,7 +23,7 @@ export default function AddIngredientsQuantity(
         onChange={(e) => props.onChange(e, props.ingredient.id)}
       />
       <span className='ingredient-unit ml-1'>
-        <small>{props.ingredient.unit}</small>
+        <small title={props.ingredient.unit}>{props.ingredient.unit}</small>
       </span>
     </div>
   );

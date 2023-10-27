@@ -27,5 +27,5 @@ export interface IngredientInterface {
   name: string;
   unit: string;
   quantity?: number;
-  mealIngredient: mealIngredientInterface;
+  mealIngredient?: mealIngredientInterface;
 }

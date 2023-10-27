@@ -19,6 +19,21 @@ import "./addMeal.scss";
 import createMeal from "@/app/hooks/createMeal";
 import createMealIngredient from "@/app/hooks/CreateMealIngredient";
 import Link from "next/link";
+import {
+  removeItemFromArray,
+  removeItemsFromArray,
+} from "@/app/utils/removeItemFromArray";
+import addItemToArray from "@/app/utils/addItemToArray";
+
+const mock = [
+  { id: 8, name: "Rice", unit: "unidades" },
+  { id: 9, name: "Eggs", unit: "unidades" },
+  { id: 10, name: "Tomato", unit: "unidades" },
+  { id: 11, name: "Onion", unit: "unidades" },
+  { id: 12, name: "Lettuce", unit: "hojas" },
+  { id: 13, name: "Meat", unit: "kilos" },
+  { id: 14, name: "Milk", unit: "litros" },
+];
 
 export default function AddMeal() {
   const router = useRouter();
@@ -33,13 +48,18 @@ export default function AddMeal() {
     loading,
   } = useAppSelector((state) => state.addMealForm);
 
+  // useEffect(() => {
+  //   fetch("/api/ingredients")
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       dispatch(setAllIngredients(res));
+  //       dispatch(setFilteredIngredients(res));
+  //     });
+  // }, [dispatch]);
+
   useEffect(() => {
-    fetch("/api/ingredients")
-      .then((res) => res.json())
-      .then((res) => {
-        dispatch(setAllIngredients(res));
-        dispatch(setFilteredIngredients(res));
-      });
+    dispatch(setAllIngredients(mock));
+    dispatch(setFilteredIngredients(mock));
   }, [dispatch]);
 
   const resetToInitialState = () => {
@@ -52,44 +72,26 @@ export default function AddMeal() {
   };
 
   /**
-   * Adds an element to an array and returns the new array.
-   * @param {IngredientInterface[]} array - The array to which the element will be added.
-   * @param {IngredientInterface} element - The element to be added to the array.
-   * @returns {IngredientInterface[]} The new array with the added element.
-   */
-  const addItemToArray = (
-    array: IngredientInterface[],
-    element: IngredientInterface
-  ) => {
-    return [...array, element];
-  };
-
-  /**
-   * Removes an item from an array and returns the new array.
-   * @param {IngredientInterface[]} array - The array from which the item will be removed.
-   * @param {IngredientInterface} item - The item to be removed from the array.
-   * @returns {IngredientInterface[]} The new array with the item removed.
-   */
-  const removeItemFromArray = (
-    array: IngredientInterface[],
-    item: IngredientInterface
-  ) => {
-    return array.filter((element) => element !== item);
-  };
-
-  /**
    * Handles the change in the search field and filters a list of ingredients based on the search term.
    * @param {React.ChangeEvent<HTMLInputElement>} event - The user input change event.
    */
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const searchTerm = event.target.value.toLowerCase();
-    dispatch(setSearchTerm(searchTerm));
+  const handleSearchChange = (
+    event: React.ChangeEvent<HTMLInputElement> | string
+  ) => {
+    if (typeof event === "string") {
+      dispatch(setSearchTerm(event));
+    } else {
+      let searchValue = event.target.value.toLowerCase();
 
-    const filteredIngredients = allIngredients.filter((ingredient) =>
-      ingredient.name.toLowerCase().includes(searchTerm)
-    );
+      const filteredIngredients = allIngredients.filter(
+        (ingredient) =>
+          ingredient.name.toLowerCase().includes(searchValue) &&
+          !selectedIngredients.some((selected) => selected.id === ingredient.id)
+      );
 
-    dispatch(setFilteredIngredients(filteredIngredients));
+      dispatch(setSearchTerm(searchValue));
+      dispatch(setFilteredIngredients(filteredIngredients));
+    }
   };
 
   /**
@@ -115,17 +117,22 @@ export default function AddMeal() {
       ingredient
     );
 
-    const newFilteredIngredients = removeItemFromArray(
-      filteredIngredients,
-      ingredient
+    const newFilteredIngredients = removeItemsFromArray(
+      allIngredients,
+      newSelectedIngredients
     );
+
+    // const newFilteredIngredients = removeItemFromArray(
+    //   filteredIngredients,
+    //   ingredient
+    // );
 
     updateSelectedAndFilteredIngredients(
       newSelectedIngredients,
       newFilteredIngredients
     );
 
-    dispatch(setSearchTerm(""));
+    if (searchTerm) handleSearchChange("");
   };
 
   /**
