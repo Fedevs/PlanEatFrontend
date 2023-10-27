@@ -25,16 +25,6 @@ import {
 } from "@/app/utils/removeItemFromArray";
 import addItemToArray from "@/app/utils/addItemToArray";
 
-const mock = [
-  { id: 8, name: "Rice", unit: "unidades" },
-  { id: 9, name: "Eggs", unit: "unidades" },
-  { id: 10, name: "Tomato", unit: "unidades" },
-  { id: 11, name: "Onion", unit: "unidades" },
-  { id: 12, name: "Lettuce", unit: "hojas" },
-  { id: 13, name: "Meat", unit: "kilos" },
-  { id: 14, name: "Milk", unit: "litros" },
-];
-
 export default function AddMeal() {
   const router = useRouter();
   const dispatch = useAppDispatch();
@@ -48,18 +38,13 @@ export default function AddMeal() {
     loading,
   } = useAppSelector((state) => state.addMealForm);
 
-  // useEffect(() => {
-  //   fetch("/api/ingredients")
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       dispatch(setAllIngredients(res));
-  //       dispatch(setFilteredIngredients(res));
-  //     });
-  // }, [dispatch]);
-
   useEffect(() => {
-    dispatch(setAllIngredients(mock));
-    dispatch(setFilteredIngredients(mock));
+    fetch("/api/ingredients")
+      .then((res) => res.json())
+      .then((res) => {
+        dispatch(setAllIngredients(res));
+        dispatch(setFilteredIngredients(res));
+      });
   }, [dispatch]);
 
   const resetToInitialState = () => {
@@ -120,11 +105,6 @@ export default function AddMeal() {
       allIngredients,
       newSelectedIngredients
     );
-
-    // const newFilteredIngredients = removeItemFromArray(
-    //   filteredIngredients,
-    //   ingredient
-    // );
 
     updateSelectedAndFilteredIngredients(
       newSelectedIngredients,
