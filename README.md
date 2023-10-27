@@ -14,6 +14,8 @@
     - [December](#december)
 5. [Roadmap 2024](#roadmap-2024)
     - [January](#january)
+    - [February](#february)
+    - [March](#march)
 6. [Stats](#stats)
 7. [Backend](#backend)
 8. [Contact](#contact)
@@ -66,7 +68,7 @@ On this screen, you can add all the meals you want to plan. You can create as ma
 3. ~~Implement state managment~~
 4. ~~Create meal times page~~
 5. Add functionality to ADD button
-   - Add meals
+   ~~- Add meals~~
    - Add meal times
 
 ## November
@@ -74,20 +76,27 @@ On this screen, you can add all the meals you want to plan. You can create as ma
 1. Add functionality to ADD button
    - Add planners
    - Add ingredients
-2. Add functionality to SEARCH button
-3. Add functionality to EDIT and DELETE buttons
 
 ## December
 
-1. Visual improvements like loading screen, empty state
-2. Release v0.1.0alpha
+Holidays
 
 # Roadmap 2024
 
 ## January
 
-1. User Login
-2. Automatic planner creation
+1. Add functionality to SEARCH button
+2. Add functionality to EDIT and DELETE
+
+## February
+
+1. Visual improvements like loading screen, empty state
+2. Release v0.1.0alpha
+3. User Login
+
+## March
+
+1. Automatic planner creation
 
 # Stats
 
