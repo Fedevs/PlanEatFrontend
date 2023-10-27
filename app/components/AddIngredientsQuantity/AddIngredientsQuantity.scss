@@ -1,0 +1,30 @@
+@import "@styles/styles";
+
+.add-ingredients-quantity {
+  position: relative;
+
+  .ingredient-name {
+    flex: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  input {
+    width: 50%;
+    border: none;
+    border-bottom: 1px solid $orange;
+    text-align: right;
+    flex: 1;
+
+    &:focus {
+      outline: 1px solid $orange;
+      border-radius: 4px;
+    }
+  }
+
+  .ingredient-unit {
+    flex: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,81 @@
+@import "@styles/styles";
+
+.dropdown {
+  position: relative;
+  border-radius: 8px;
+  flex-wrap: wrap;
+
+  .tags-input-container {
+    border-radius: 8px;
+    box-shadow: 0 0 4px 0 $black25;
+    background-color: $white;
+    cursor: text;
+
+    .tags-input-wrapper {
+      flex-wrap: wrap;
+      width: 90%;
+      box-shadow: 1px 0 $black25;
+    }
+
+    .search-input {
+      border-radius: 8px;
+      border: none;
+      width: 0px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .expand-container {
+      cursor: pointer;
+
+      svg {
+        fill: $black25;
+      }
+    }
+  }
+
+  .on-focus {
+    border: 1px solid $orange;
+    box-shadow: none;
+
+    .tags-input-wrapper {
+      border-right: 1px solid $orange;
+      box-shadow: none;
+    }
+
+    .expand-container {
+      svg {
+        fill: $orange;
+      }
+    }
+  }
+
+  .dropdown-menu {
+    background-color: $white;
+    border: 1px solid $orange;
+    display: none;
+    max-height: 150px;
+    overflow-y: auto;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 2px 0 $black25;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $orange;
+      border-radius: 20px;
+    }
+
+    & > * {
+      padding-left: 8px;
+    }
+  }
+}

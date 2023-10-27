@@ -1,0 +1,99 @@
+@import "@styles/styles";
+
+.add-meal {
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+
+  h1 {
+    text-align: center;
+  }
+
+  label {
+    font-weight: bold;
+    color: $black;
+  }
+
+  .input {
+    border: none;
+    font-size: 16px;
+    box-shadow: 0 0 4px 0 $black25;
+    border-radius: 8px;
+    background-color: $white;
+    width: 100%;
+
+    &:focus {
+      outline: 1px solid $orange;
+      box-shadow: none;
+    }
+  }
+
+  .dropdown-option {
+    cursor: pointer;
+    width: calc(100% - 8px);
+
+    &:hover {
+      background-color: $orange25;
+    }
+  }
+
+  .quantity-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  }
+
+  .error {
+    font-size: 14px;
+    font-weight: bold;
+    color: red;
+    text-align: left;
+  }
+
+  .action-buttons {
+    button {
+      background-color: transparent;
+      border: none;
+      border-radius: 8px;
+      transition: all 0.5s;
+      cursor: pointer;
+    }
+
+    .cancel-button {
+      font-weight: bold;
+      color: $black;
+      font-size: 14px;
+
+      a {
+        text-decoration: none;
+
+        &:visited {
+          color: $black;
+        }
+      }
+
+      &:hover {
+        background-color: $black25;
+      }
+    }
+
+    .confirm-button {
+      background-color: $blue;
+      color: $white;
+      font-weight: bold;
+      box-shadow: 0 0 4px 0 $black25;
+
+      &:hover {
+        background-color: $orange;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+
+        &:hover {
+          background-color: $blue;
+        }
+      }
+    }
+  }
+}

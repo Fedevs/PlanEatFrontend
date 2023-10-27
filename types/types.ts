@@ -16,7 +16,7 @@ export interface MealTimesInterface {
   order?: number;
 }
 
-interface mealIngredientInterface {
+export interface mealIngredientInterface {
   mealId: number;
   ingredientId: number;
   quantity: number;
@@ -26,5 +26,6 @@ export interface IngredientInterface {
   id: number;
   name: string;
   unit: string;
-  mealIngredient: mealIngredientInterface;
+  quantity?: number;
+  mealIngredient?: mealIngredientInterface;
 }

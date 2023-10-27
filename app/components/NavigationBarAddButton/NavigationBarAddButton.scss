@@ -8,6 +8,20 @@
   width: calc(100% / 5);
   cursor: pointer;
 
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+
+    a {
+      pointer-events: none;
+
+      .icon:hover {
+        transform: none;
+        box-shadow: none;
+      }
+    }
+  }
+
   .icon {
     background-color: $orange;
     width: 90%;

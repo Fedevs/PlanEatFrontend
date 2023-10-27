@@ -68,7 +68,8 @@ export default function formatIngredients(
     { name: "deploying" },
   ];
 
-  const ingredientNames = mock
+  const array = ingredients.length ? ingredients : mock;
+  const ingredientNames = array
     .map((ingredient) => ingredient.name)
     .filter((name) => {
       if (currentLength + name.length <= maxLength) {

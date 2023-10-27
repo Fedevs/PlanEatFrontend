@@ -1,0 +1,20 @@
+@import "@styles/styles";
+
+.tags {
+  position: relative;
+  border: 1px solid $blue;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  text-wrap: nowrap;
+  background-color: $blue;
+  color: $white;
+
+  .icon-container {
+    svg {
+      fill: $white;
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
