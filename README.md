@@ -68,7 +68,7 @@ On this screen, you can add all the meals you want to plan. You can create as ma
 3. ~~Implement state managment~~
 4. ~~Create meal times page~~
 5. Add functionality to ADD button
-   ~~- Add meals~~
+   - ~~Add meals~~
    - Add meal times
 
 ## November
