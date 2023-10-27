@@ -233,6 +233,18 @@ export default function AddMeal() {
     router.push("/meals");
   };
 
+  const handleOnKeyDown = (event: React.KeyboardEvent) => {
+    if (
+      (event.key === "Backspace" || event.code === "Backspace") &&
+      selectedIngredients.length &&
+      searchTerm === ""
+    ) {
+      const lastIngredient =
+        selectedIngredients[selectedIngredients.length - 1];
+      handleIngredientDeselect(lastIngredient.id);
+    }
+  };
+
   const handleCancel = () => {
     resetToInitialState();
   };
@@ -265,6 +277,7 @@ export default function AddMeal() {
             searchTerm={searchTerm}
             selected={selectedIngredients}
             deselectElement={handleIngredientDeselect}
+            onKeyDown={handleOnKeyDown}
           >
             {filteredIngredients.length ? (
               filteredIngredients.map((ingredient) => (

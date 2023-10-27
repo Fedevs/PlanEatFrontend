@@ -16,6 +16,7 @@ interface DropdownProps {
   id: string;
   selected: tag[];
   deselectElement: (id: number) => void;
+  onKeyDown: (event: React.KeyboardEvent) => void;
 }
 
 export default function Dropdown(props: DropdownProps) {
@@ -98,6 +99,7 @@ export default function Dropdown(props: DropdownProps) {
             onFocus={handleInputFocus}
             onBlur={handleInputBlur}
             style={{ width: inputWidth }}
+            onKeyDown={props.onKeyDown}
           />
         </div>
         <div
